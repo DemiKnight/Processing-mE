@@ -6,8 +6,12 @@ public class ProcessingGame extends PApplet{
 
     private static String version = "0.0.1";
 
-    public static void main(String[] args){
+    public static void main(String[] args)
+    {
+        if(ConfigManager.init()!= 0) System.err.println("Problem when loading config! Check Logs");
+
         PApplet.main("com.krypticalKnight.processingGame.ProcessingGame");
+
     }
 
     public void settings()
@@ -22,6 +26,7 @@ public class ProcessingGame extends PApplet{
 
     public void draw()
     {
+
         text("Version: " + version, width/2,height/2);
     }
 
