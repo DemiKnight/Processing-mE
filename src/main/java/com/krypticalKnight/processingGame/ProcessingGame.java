@@ -5,9 +5,22 @@ import processing.core.PApplet;
 public class ProcessingGame extends PApplet{
 
     public static void main(String[] args){
-
-        System.out.println("Hello World!");
         PApplet.main("com.krypticalKnight.processingGame.ProcessingGame");
-
     }
+
+    public void settings()
+    {
+        size(720,480);
+    }
+
+    public void setup()
+    {
+        fill(120);
+    }
+
+    public void draw()
+    {
+        
+    }
+
 }
