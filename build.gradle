@@ -35,6 +35,10 @@ sourceSets {
         compileClasspath += configurations.provided
     }
 }
+processResources{
+    from(sourceSets.main.resources.srcDirs)
+}
+
 
 dependencies {
     provided group: 'org.processing', name: 'core', version: '3.3.6'
