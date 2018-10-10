@@ -6,9 +6,16 @@ public class ProcessingGame extends PApplet{
 
     private static String version = "0.0.1";
 
+//    private ConfigManager configM = new ConfigManager();
+
     public static void main(String[] args)
     {
-        if(ConfigManager.init()!= 0) System.err.println("Problem when loading config! Check Logs");
+        ConfigManager configM = new ConfigManager();
+
+
+        configM.init();
+
+//        if(ConfigManager.init(this)!= 0) System.err.println("Problem when loading config! Check Logs");
 
         PApplet.main("com.krypticalKnight.processingGame.ProcessingGame");
 
