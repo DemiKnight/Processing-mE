@@ -11,6 +11,7 @@ import java.util.List;
 
 public class JsonReader {
 
+
     /**
      * Will store the file to be read.
      * @implNote May be removed in the future.
@@ -24,7 +25,7 @@ public class JsonReader {
     private List<String> lines;
 
 
-    private HashMap<String, String> storecMap;
+    private HashMap<String, JsonValue> storecMap;
 
     /**
      * This will read the file specified and store it within the class, converted.
