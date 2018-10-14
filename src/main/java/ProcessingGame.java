@@ -1,5 +1,3 @@
-package com.krypticalKnight.processingGame;
-
 import processing.core.PApplet;
 
 public class ProcessingGame extends PApplet{
@@ -12,12 +10,9 @@ public class ProcessingGame extends PApplet{
     {
         ConfigManager configM = new ConfigManager();
 
+        //        if(ConfigManager.init(this)!= 0) System.err.println("Problem when loading config! Check Logs");
 
-        configM.init();
-
-//        if(ConfigManager.init(this)!= 0) System.err.println("Problem when loading config! Check Logs");
-
-        PApplet.main("com.krypticalKnight.processingGame.ProcessingGame");
+        PApplet.main("ProcessingGame");
 
     }
 

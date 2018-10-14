@@ -15,14 +15,6 @@ version '0.0.1.0'
 
 sourceCompatibility = 1.8
 
-defaultTasks('clean','build')
-
-task runApp(type: JavaExec) {
-    classpath = sourceSets.main.runtimeClasspath
-
-    main = 'com.krypticalKnight.processingGame.ProcessingGame'
-}
-
 repositories {
     mavenCentral()
 }
@@ -33,11 +25,12 @@ configurations {
 sourceSets {
     main {
         compileClasspath += configurations.provided
+
     }
 }
-processResources{
-    from(sourceSets.main.resources.srcDirs)
-}
+//processResources{
+//    from(sourceSets.main.resources)
+//}
 
 
 dependencies {
