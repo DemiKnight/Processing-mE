@@ -47,14 +47,20 @@ public class JsonReader {
         {
             e.printStackTrace();
         }
+        System.out.println("Hello");
 
-
+        convertLines();
     }
 
     /**
      * Convert all the lines in the {@link JsonReader#lines} to json format
      */
     private void convertLines(){
+
+        for (String line : lines)
+        {
+            System.out.println(line);
+        }
 
     }
 
