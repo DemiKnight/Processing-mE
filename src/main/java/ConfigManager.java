@@ -9,7 +9,7 @@ public class ConfigManager {
      */
     public static byte init() {
 
-        JsonReader configFile = new JsonReader("config.json");
+        JsonReader configFile = new JsonReader("../config.json");
 
 
         return 0;

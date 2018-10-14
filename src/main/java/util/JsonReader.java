@@ -47,7 +47,6 @@ public class JsonReader {
         {
             e.printStackTrace();
         }
-        System.out.println("Hello");
 
         convertLines();
     }
@@ -59,7 +58,7 @@ public class JsonReader {
 
         for (String line : lines)
         {
-            System.out.println(line);
+            System.out.println(line); //Print entire config file, before 
         }
 
     }

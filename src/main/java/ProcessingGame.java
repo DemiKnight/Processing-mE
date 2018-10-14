@@ -8,8 +8,7 @@ public class ProcessingGame extends PApplet{
 
     public static void main(String[] args)
     {
-        ConfigManager configM = new ConfigManager();
-
+        ConfigManager.init();
 
         PApplet.main("ProcessingGame");
 
@@ -17,7 +16,7 @@ public class ProcessingGame extends PApplet{
 
     public void settings()
     {
-        size(720,480);
+        size(250,250);
     }
 
     public void setup()
@@ -28,7 +27,5 @@ public class ProcessingGame extends PApplet{
     public void draw()
     {
 
-        text("Version: " + version, width/2,height/2);
     }
-
 }
