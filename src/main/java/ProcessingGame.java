@@ -10,7 +10,6 @@ public class ProcessingGame extends PApplet{
     {
         ConfigManager configM = new ConfigManager();
 
-        //        if(ConfigManager.init(this)!= 0) System.err.println("Problem when loading config! Check Logs");
 
         PApplet.main("ProcessingGame");
 
