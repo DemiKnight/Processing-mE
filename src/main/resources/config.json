@@ -1,4 +1,7 @@
 {
   "configVersion": 0,
-  "debug": 1
+  "debug": "true",
+  "test": {
+    "testProperty": 1.54
+  }
 }

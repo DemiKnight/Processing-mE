@@ -51,17 +51,38 @@ public class JsonReader {
         convertLines();
     }
 
+    private HashMap<String, JsonValue> getChild(int startingIndex){
+       HashMap<String, JsonValue> tempHashMap = new HashMap<String, JsonValue>();
+
+
+
+        int indexLine = startingIndex;
+       while(!lines.get(indexLine).equals("}"))
+       {
+            if(lines.contains("{"))
+            {
+                //Start of a new child
+            }else{
+                //Is a property
+
+            }
+
+           indexLine++;
+       }
+
+       return tempHashMap;
+    }
+
     /**
      * Convert all the lines in the {@link JsonReader#lines} to json format
      */
     private void convertLines(){
 
-        for (String line : lines)
+//        for (String line : lines)
+        for (int index = 0;index < lines.size() ;index++)
         {
-            System.out.println(line); //Print entire config file, before 
+            System.out.println(lines.get(index)); //Print entire config file, before
         }
-
     }
-
 
 }
