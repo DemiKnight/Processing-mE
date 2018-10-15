@@ -1,5 +1,7 @@
 package util;
 
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
+
 import java.io.File;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -7,6 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 public class JsonReader {
@@ -25,7 +28,7 @@ public class JsonReader {
     private List<String> lines;
 
 
-    private HashMap<String, JsonValue> storecMap;
+    private static HashMap<String, JsonValue> storeMap;
 
     /**
      * This will read the file specified and store it within the class, converted.
@@ -48,7 +51,14 @@ public class JsonReader {
             e.printStackTrace();
         }
 
-        convertLines();
+//        convertLines();
+
+        storeMap = getChild(1);
+    }
+
+
+    public static HashMap<String, JsonValue> getStoreMap() {
+        return storeMap;
     }
 
     private HashMap<String, JsonValue> getChild(int startingIndex){
@@ -59,13 +69,25 @@ public class JsonReader {
         int indexLine = startingIndex;
        while(!lines.get(indexLine).equals("}"))
        {
-            if(lines.contains("{"))
-            {
-                //Start of a new child
-            }else{
-                //Is a property
+//           System.out.println(lines.contains("{"));
 
+            if(lines.get(indexLine).contains("{"))
+            {
+                JsonValue<HashMap<String,JsonValue>> passback;
+
+
+
+                //Gets the next object within the jsonArray
+                getChild(indexLine+1);
             }
+            if (lines.get(indexLine).contains("\"")){
+                //Is a property
+                
+
+                System.out.println(lines.get(indexLine));
+            }
+            //ELse is the end of a object
+
 
            indexLine++;
        }
@@ -81,7 +103,7 @@ public class JsonReader {
 //        for (String line : lines)
         for (int index = 0;index < lines.size() ;index++)
         {
-            System.out.println(lines.get(index)); //Print entire config file, before
+//            System.out.println(lines.get(index)); //Print entire config file, before
         }
     }
 
