@@ -11,6 +11,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class JsonReader {
 
@@ -83,6 +85,11 @@ public class JsonReader {
             if (lines.get(indexLine).contains("\"")){
                 //Is a property
                 
+                Pattern newPattern = Pattern.compile("([a-z]\\w+)");
+                Matcher m = newPattern.matcher(lines.get(indexLine));
+
+
+                System.out.println((m.find() ? m.group() : ""));
 
                 System.out.println(lines.get(indexLine));
             }
