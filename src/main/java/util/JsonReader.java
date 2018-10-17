@@ -63,27 +63,35 @@ public class JsonReader {
     private HashMap<String, JsonValue> getChild(int startingIndex){
        HashMap<String, JsonValue> tempHashMap = new HashMap<String, JsonValue>();
 
-
+        Pattern findPropertyIDPatern = Pattern.compile("([A-Za-z0-9]\\w+)|(\\d+.\\d+)|(\\d)");
+        Matcher matcher;
 
         int indexLine = startingIndex;
        while(!lines.get(indexLine).equals("}"))
        {
 //           System.out.println(lines.contains("{"));
 
-            if(lines.get(indexLine).contains("{"))
+           //Uses the regex to find both the property ID and value. index 0 = ID, 1 = Value
+            matcher = findPropertyIDPatern.matcher(lines.get(indexLine));
+
+
+            if(lines.get(indexLine).contains("{") && matcher.find())
             {
-                JsonValue<HashMap<String,JsonValue>> passback;
-
-
+                HashMap<String, JsonValue> passback;
 
                 //Gets the next object within the jsonArray
-                getChild(indexLine+1);
+                passback = getChild(indexLine+1);
+
+                JsonValue<HashMap> newJsonValue = new JsonValue(passback);
+
+                storeMap.put(matcher.group(0), newJsonValue);
+
             }
+
+
+
             if (lines.get(indexLine).contains("\"")){
                 //Is a property
-                
-                Pattern findPropertyIDPatern = Pattern.compile("([a-zA-Z]\\w+)");
-                Pattern findValuePattern = Pattern.compile("(?<=\\:)( \\d+\\.\\d+)");
 
 //                (?<=\:)( \d+\.\d+| \d+) - Currently finds numeric values
                 // ([A-Za-z0-9]\w+)|(\d+.\d+)|(\d) -  Finds ever numeric and alphabetic values
