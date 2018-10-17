@@ -1,7 +1,5 @@
 package util;
 
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
-
 import java.io.File;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -9,7 +7,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -85,16 +82,23 @@ public class JsonReader {
             if (lines.get(indexLine).contains("\"")){
                 //Is a property
                 
-                Pattern newPattern = Pattern.compile("([a-z]\\w+)");
-                Matcher m = newPattern.matcher(lines.get(indexLine));
+                Pattern findPropertyIDPatern = Pattern.compile("([a-z]\\w+)");
+                Pattern findValuePattern = Pattern.compile("(?<=\\:)( \\d+\\.\\d+)");
 
+//                (?<=\:)( \d+\.\d+| \d+) - Currently finds numeric values  
+
+                Matcher m = findPropertyIDPatern.matcher(lines.get(indexLine));
+
+                if(m.find())
+                {
+//                    tempHashMap.put(m.group(), );
+                }
 
                 System.out.println((m.find() ? m.group() : ""));
 
                 System.out.println(lines.get(indexLine));
             }
-            //ELse is the end of a object
-
+            //Else is the end of a object
 
            indexLine++;
        }
