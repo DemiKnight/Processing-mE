@@ -1,6 +1,10 @@
 {
   "configVersion": 0,
   "debug": "true",
+  "testArray": [
+    "Value1",
+    "Value2"
+  ],
   "test": {
     "testProperty": 1.54
   }

@@ -82,10 +82,11 @@ public class JsonReader {
             if (lines.get(indexLine).contains("\"")){
                 //Is a property
                 
-                Pattern findPropertyIDPatern = Pattern.compile("([a-z]\\w+)");
+                Pattern findPropertyIDPatern = Pattern.compile("([a-zA-Z]\\w+)");
                 Pattern findValuePattern = Pattern.compile("(?<=\\:)( \\d+\\.\\d+)");
 
-//                (?<=\:)( \d+\.\d+| \d+) - Currently finds numeric values  
+//                (?<=\:)( \d+\.\d+| \d+) - Currently finds numeric values
+                // ([A-Za-z0-9]\w+)|(\d+.\d+)|(\d) -  Finds ever numeric and alphabetic values
 
                 Matcher m = findPropertyIDPatern.matcher(lines.get(indexLine));
 
