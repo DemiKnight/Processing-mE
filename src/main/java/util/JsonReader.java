@@ -60,16 +60,21 @@ public class JsonReader {
         return storeMap;
     }
 
+    /**
+     *
+     *
+     * @param startingIndex The line of the file file to start from.
+     * @return {HashMap} The contents of the
+     */
     private HashMap<String, JsonValue> getChild(int startingIndex){
        HashMap<String, JsonValue> tempHashMap = new HashMap<String, JsonValue>();
 
         Pattern findPropertyIDPatern = Pattern.compile("([A-Za-z0-9]\\w+)|(\\d+.\\d+)|(\\d)");
-//        Matcher matcher;
 
         int indexLine = startingIndex;
+
         while(!lines.get(indexLine).equals("}"))
        {
-//           System.out.println(lines.contains("{"));
 
            //Uses the regex to find both the property ID and value. index 0 = ID, 1 = Value
            Matcher matcher = findPropertyIDPatern.matcher(lines.get(indexLine));
@@ -91,7 +96,6 @@ public class JsonReader {
             //This is a normal JSON property
             if(matcher.find())
             {
-
                 System.out.println("Group Property: " + matcher.group(0));
 
 
@@ -99,26 +103,6 @@ public class JsonReader {
 
                 storeMap.put(matcher.group(0), newJsonValue);
             }
-
-
-            /*if (lines.get(indexLine).contains("\"")){
-                //Is a property
-
-//                (?<=\:)( \d+\.\d+| \d+) - Currently finds numeric values
-                // ([A-Za-z0-9]\w+)|(\d+.\d+)|(\d) -  Finds ever numeric and alphabetic values
-
-                Matcher m = findPropertyIDPatern.matcher(lines.get(indexLine));
-
-                if(m.find())
-                {
-//                    tempHashMap.put(m.group(), );
-                }
-
-                System.out.println((m.find() ? m.group() : ""));
-
-//                System.out.println(lines.get(indexLine));
-            }*/
-            //Else is the end of a object
 
            indexLine++;
        }

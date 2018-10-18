@@ -1,6 +1,8 @@
 {
   "configVersion": 0,
   "debug": "true",
+  "sizeWidth": 500,
+  "sizeHeight": 500,
   "testArray": [
     "Value1",
     "Value2"
