@@ -56,7 +56,7 @@ public class JsonReader {
     }
 
 
-    public static HashMap<String, JsonValue> getStoreMap() {
+    public HashMap<String, JsonValue> getStoreMap() {
         return storeMap;
     }
 

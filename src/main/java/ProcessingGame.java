@@ -8,7 +8,7 @@ public class ProcessingGame extends PApplet{
 
     public static void main(String[] args)
     {
-        ConfigManager.init();
+//        ConfigManager.init();
 
         PApplet.main("ProcessingGame");
 
