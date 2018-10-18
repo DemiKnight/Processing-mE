@@ -27,7 +27,7 @@ public class JsonReader {
     private List<String> lines;
 
 
-    private static HashMap<String, JsonValue> storeMap;
+    private static HashMap<String, JsonValue> storeMap = new HashMap<String, JsonValue>();
 
     /**
      * This will read the file specified and store it within the class, converted.
@@ -64,17 +64,17 @@ public class JsonReader {
        HashMap<String, JsonValue> tempHashMap = new HashMap<String, JsonValue>();
 
         Pattern findPropertyIDPatern = Pattern.compile("([A-Za-z0-9]\\w+)|(\\d+.\\d+)|(\\d)");
-        Matcher matcher;
+//        Matcher matcher;
 
         int indexLine = startingIndex;
-       while(!lines.get(indexLine).equals("}"))
+        while(!lines.get(indexLine).equals("}"))
        {
 //           System.out.println(lines.contains("{"));
 
            //Uses the regex to find both the property ID and value. index 0 = ID, 1 = Value
-            matcher = findPropertyIDPatern.matcher(lines.get(indexLine));
+           Matcher matcher = findPropertyIDPatern.matcher(lines.get(indexLine));
 
-
+            //line is the beginning of a JSON object
             if(lines.get(indexLine).contains("{") && matcher.find())
             {
                 HashMap<String, JsonValue> passback;
@@ -85,12 +85,23 @@ public class JsonReader {
                 JsonValue<HashMap> newJsonValue = new JsonValue(passback);
 
                 storeMap.put(matcher.group(0), newJsonValue);
+                System.out.println("Group Property: " + matcher.group(0));
+            }
 
+            //This is a normal JSON property
+            if(matcher.find())
+            {
+
+                System.out.println("Group Property: " + matcher.group(0));
+
+
+                JsonValue<Integer> newJsonValue = new JsonValue<Integer>(2);
+
+                storeMap.put(matcher.group(0), newJsonValue);
             }
 
 
-
-            if (lines.get(indexLine).contains("\"")){
+            /*if (lines.get(indexLine).contains("\"")){
                 //Is a property
 
 //                (?<=\:)( \d+\.\d+| \d+) - Currently finds numeric values
@@ -105,8 +116,8 @@ public class JsonReader {
 
                 System.out.println((m.find() ? m.group() : ""));
 
-                System.out.println(lines.get(indexLine));
-            }
+//                System.out.println(lines.get(indexLine));
+            }*/
             //Else is the end of a object
 
            indexLine++;

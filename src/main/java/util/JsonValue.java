@@ -47,4 +47,16 @@ public class JsonValue<T> {
         return property;
     }
 
+    /** WIll find the
+     *
+     *
+     * @return
+     */
+    public static int getValueType()
+    {
+
+
+        return 2;
+    }
+
 }
