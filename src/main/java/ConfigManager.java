@@ -1,4 +1,3 @@
-import org.jetbrains.annotations.Contract;
 import util.JsonReader;
 
 public class ConfigManager {
@@ -21,7 +20,7 @@ public class ConfigManager {
         return String.valueOf(configFile.getStoreMap().size());
     }
 
-    @Contract(pure = true)
+
     public static JsonReader getConfig()
     {
         return configFile;
