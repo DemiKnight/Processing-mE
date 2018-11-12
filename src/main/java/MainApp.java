@@ -1,16 +1,19 @@
 import processing.core.PApplet;
+import render.RenderManager;
 
-public class ProcessingGame extends PApplet{
+public class MainApp extends PApplet{
 
     private static String version = "0.0.1";
 
 //    private ConfigManager configM = new ConfigManager();
 
+    private static RenderManager renderM;
+
     public static void main(String[] args)
     {
-//        ConfigManager.init();
+        renderM = new RenderManager();
 
-        PApplet.main("ProcessingGame");
+        PApplet.main("MainApp");
 
     }
 
@@ -26,7 +29,7 @@ public class ProcessingGame extends PApplet{
 
     public void draw()
     {
-
+        renderM.renderFrame();
     }
 
 }

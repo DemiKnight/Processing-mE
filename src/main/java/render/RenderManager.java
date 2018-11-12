@@ -1,5 +1,8 @@
 package render;
 
+import org.omg.IOP.ENCODING_CDR_ENCAPS;
+
+import java.util.LinkedList;
 import java.util.List;
 
 public class RenderManager {
@@ -8,11 +11,20 @@ public class RenderManager {
 
     private List<Integer> updateList;
 
+    public RenderManager()
+    {
+        renderList = new LinkedList<Entity>();
+        updateList = new LinkedList<Integer>();
+    }
+
     public void renderFrame()
     {
         updateEntities();
 
-
+        for (Entity selectEntity: renderList)
+        {
+            selectEntity.render();
+        }
     }
 
     private void updateEntities()

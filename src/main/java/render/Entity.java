@@ -1,7 +1,5 @@
 package render;
 
-import processing.core.PApplet;
-
 public interface Entity {
 
     public RENDER_STATES renderState = RENDER_STATES.rendering;
