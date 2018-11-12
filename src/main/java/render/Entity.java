@@ -1,6 +1,6 @@
 package render;
 
-public interface Entity {
+public class Entity {
 
     public RENDER_STATES renderState = RENDER_STATES.rendering;
 
@@ -14,9 +14,9 @@ public interface Entity {
      * */
     public float yLocation = 0;
 
-    public void render();
+    public void render(){}
 
-    public void update();
+    public void update(){}
 
 
 }
