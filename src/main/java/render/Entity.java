@@ -1,9 +1,17 @@
 package render;
 
+import processing.core.PApplet;
+
 public class Entity {
 
     public RENDER_STATES renderState = RENDER_STATES.rendering;
 
+    protected PApplet parent;
+
+    public Entity(PApplet P)
+    {
+        this.parent = P;
+    }
     /**
      *
      */
