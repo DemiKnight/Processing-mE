@@ -4,9 +4,17 @@ import processing.core.PApplet;
 
 public interface Entity {
 
-//    protected PApplet parent;
+    public RENDER_STATES renderState = RENDER_STATES.rendering;
 
-    RENDER_STATES renderState = RENDER_STATES.rendering;
+    /**
+     *
+     */
+    public float xLocation = 0;
+
+    /**
+     * THe y location of the entity
+     * */
+    public float yLocation = 0;
 
     public void render();
 
