@@ -24,6 +24,12 @@ public class Entity {
 
     public void render(){}
 
+    private boolean canRender()
+    {
+//        if (renderState == RENDER_STATES.halted) return false;
+        return true;
+    }
+
     public void update(){}
 
 

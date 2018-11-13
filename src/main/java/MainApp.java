@@ -1,6 +1,5 @@
 import processing.core.PApplet;
 import render.RenderManager;
-import test.TestEntity;
 
 public class MainApp extends PApplet{
 

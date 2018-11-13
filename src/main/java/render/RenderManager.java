@@ -32,10 +32,11 @@ public class RenderManager {
     private void updateEntities()
     {
         Iterator<Integer> integerIterator = updateList.iterator();
+        Integer tempInt = 0;
 
         while (integerIterator.hasNext())
         {
-            Integer tempInt = integerIterator.next();
+            tempInt = integerIterator.next();
 
             if (renderList.get(tempInt).renderState == RENDER_STATES.halted)
             {
@@ -43,7 +44,6 @@ public class RenderManager {
             }
             else
             {
-
                 renderList.get(tempInt).update();
             }
         }
