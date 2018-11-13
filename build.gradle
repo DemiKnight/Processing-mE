@@ -10,7 +10,7 @@ group 'com.krytpicalknight.processingGame'
  * 3. hotfixes
  * 4. build
  */
-version '0.0.1.0'
+version '0.0.2.0'
 
 
 sourceCompatibility = 1.8
