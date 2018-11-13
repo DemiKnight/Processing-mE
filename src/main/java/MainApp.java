@@ -29,6 +29,8 @@ public class MainApp extends PApplet{
 
     public void draw()
     {
+        renderM.clear(this);
+
         renderM.renderFrame();
     }
 

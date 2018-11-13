@@ -1,7 +1,9 @@
 package render;
 
 import org.omg.IOP.ENCODING_CDR_ENCAPS;
+import processing.core.PApplet;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -29,22 +31,34 @@ public class RenderManager {
 
     private void updateEntities()
     {
-        for(Integer selectElement : updateList)
+        Iterator<Integer> integerIterator = updateList.iterator();
+        Integer tempInt = 0;
+
+        while (integerIterator.hasNext())
         {
-            if (renderList.get(selectElement).renderState == RENDER_STATES.halted)
+            tempInt = integerIterator.next();
+
+            if (renderList.get(tempInt).renderState == RENDER_STATES.halted)
             {
-                renderList.remove(renderList.get(selectElement));
+                integerIterator.remove();
             }
             else
             {
-                renderList.get(selectElement).update();
+                renderList.get(tempInt).update();
             }
         }
     }
 
-    public void addToRender(Entity entToAdd)
+    public void clear(PApplet parent)
+    {
+        parent.clear();
+        parent.background(155);
+    }
+
+    public void addToRender(Entity entToAdd, boolean update)
     {
         renderList.add(entToAdd);
+        if(update) updateList.add(renderList.size()-1);
     }
 
     public void removeFromRender(Entity entToRemove)
