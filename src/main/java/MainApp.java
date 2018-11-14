@@ -3,18 +3,20 @@ import render.RenderManager;
 
 public class MainApp extends PApplet{
 
-    private static String version = "0.0.2";
+    private static String version = "0.0.3";
 
 //    private ConfigManager configM = new ConfigManager();
 
     private static RenderManager renderM;
+    private static EntityManager entityM;
+
 
     public static void main(String[] args)
     {
         renderM = new RenderManager();
+        entityM = new EntityManager(renderM);
 
         PApplet.main("MainApp");
-
     }
 
     public void settings()
