@@ -3,7 +3,7 @@ import render.RenderManager;
 
 public class MainApp extends PApplet{
 
-    private static String version = "0.0.1";
+    private static String version = "0.0.2";
 
 //    private ConfigManager configM = new ConfigManager();
 

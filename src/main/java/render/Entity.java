@@ -6,7 +6,7 @@ import processing.core.PApplet;
  * This is the superclass for every entity being rendered to the screen. Through this entity, all relevant rendering
  * and game information should be stored and executed.
  *
- * @author alexk
+ * @author Alex Knight
  * @since 0.0.2
  * @see RenderManager
  */
