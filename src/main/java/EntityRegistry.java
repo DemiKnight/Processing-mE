@@ -5,5 +5,7 @@
  */
 public interface EntityRegistry {
 
+    void RegisterEntities(EntityManager manager);
+
 
 }

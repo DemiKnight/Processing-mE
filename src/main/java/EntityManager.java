@@ -13,8 +13,14 @@ import java.util.List;
  * */
 public class EntityManager {
 
-
+    /**
+     *
+     */
     private List<Entity> entityList;
+
+    /**
+     *
+     */
     private RenderManager renderManager;
 
 
@@ -26,14 +32,28 @@ public class EntityManager {
         entityList = new LinkedList<>();
     }
 
-   public void Registry()
-   {
-
-   }
-
    public void Registry(EntityRegistry intendedRegistry)
    {
+       intendedRegistry.RegisterEntities(this);
+   }
 
+   public void addToRegistry(Entity entToAdd)
+   {
+       entityList.add(entToAdd);
+       renderManager.addToRender(entToAdd,true);
+   }
+
+   public void addToRegistry(Entity entToAdd, boolean willUpdate)
+   {
+       entityList.add(entToAdd);
+       renderManager.addToRender(entToAdd, willUpdate);
+   }
+
+   public Entity getEntity(int index) { return this.entityList.get(index); }
+
+   public List<Entity> getEntityList()
+   {
+       return this.entityList;
    }
 
 }
