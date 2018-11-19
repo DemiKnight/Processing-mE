@@ -28,10 +28,14 @@ public class RenderManager {
      */
     private List<Integer> updateList;
 
-    public RenderManager()
+    private ResourceManager resourceM;
+
+    public RenderManager(ResourceManager resourceManager)
     {
         renderList = new LinkedList<Entity>();
         updateList = new LinkedList<Integer>();
+        this.resourceM = resourceManager;
+
         //Linked list will be used as the collection type to allow for dynamic entity addition/subtraction
     }
 

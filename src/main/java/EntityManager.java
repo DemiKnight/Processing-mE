@@ -1,5 +1,6 @@
 import render.Entity;
 import render.RenderManager;
+import render.ResourceManager;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -23,11 +24,14 @@ public class EntityManager {
      */
     private RenderManager renderManager;
 
+    private ResourceManager resourceM;
 
 
-    public EntityManager(RenderManager renderM)
+    public EntityManager(RenderManager renderM, ResourceManager resourceManager)
     {
         this.renderManager = renderM;
+        this.resourceM = resourceManager;
+
 
         entityList = new LinkedList<>();
     }

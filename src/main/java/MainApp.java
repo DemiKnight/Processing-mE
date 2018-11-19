@@ -1,5 +1,6 @@
 import processing.core.PApplet;
 import render.RenderManager;
+import render.ResourceManager;
 
 public class MainApp extends PApplet{
 
@@ -9,13 +10,16 @@ public class MainApp extends PApplet{
 
     private static RenderManager renderM;
     private static EntityManager entityM;
+    private static ResourceManager resourceM;
 
 
     public static void main(String[] args)
     {
-        renderM = new RenderManager();
-        entityM = new EntityManager(renderM);
+        resourceM = new ResourceManager();
 
+        renderM = new RenderManager(resourceM);
+        entityM = new EntityManager(renderM,resourceM);
+        
         PApplet.main("MainApp");
     }
 
