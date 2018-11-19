@@ -61,13 +61,13 @@ public class ResourceManager {
     {
         return shapeList.get(index);
     }
-//    public <T> getResource(int index, supportedTypes type)
-//    {
-//        T obj = new T();
-//
-//
-////        return imageList.get(index);
-//    }
+
+
+    public void addResource(ResourceRequirements resourceRequired)
+    {
+        resourceRequired.registerResourcesPImage(this.imageList);
+        resourceRequired.registerResourcesPShape(this.shapeList);
+    }
 
     /**
      * Will add the given image, using <tt>loadImage()</tt>, to the list and make it available for use.

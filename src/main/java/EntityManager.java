@@ -1,6 +1,8 @@
+import processing.core.PImage;
 import render.Entity;
 import render.RenderManager;
 import render.ResourceManager;
+import render.ResourceRequirements;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -32,13 +34,20 @@ public class EntityManager {
         this.renderManager = renderM;
         this.resourceM = resourceManager;
 
-
         entityList = new LinkedList<>();
     }
 
    public void Registry(EntityRegistry intendedRegistry)
    {
        intendedRegistry.RegisterEntities(this);
+   }
+
+   public void registerResource()
+   {
+       for (Entity entSelect: entityList )
+       {
+           if (entSelect instanceof ResourceRequirements) resourceM.addResource((ResourceRequirements) entSelect);
+       }
    }
 
    public void addToRegistry(Entity entToAdd)
