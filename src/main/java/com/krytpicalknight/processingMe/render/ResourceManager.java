@@ -1,4 +1,4 @@
-package render;
+package com.krytpicalknight.processingMe.render;
 
 import processing.core.PApplet;
 import processing.core.PImage;
@@ -65,8 +65,15 @@ public class ResourceManager {
 
     public void addResource(ResourceRequirements resourceRequired)
     {
+        int imageSize = this.imageList.size();
+        int shapeSize = this.shapeList.size();
+
         resourceRequired.registerResourcesPImage(this.imageList);
         resourceRequired.registerResourcesPShape(this.shapeList);
+
+        System.out.print(String.format("%d PImages & ", this.imageList.size()-imageSize));
+        System.out.println(String.format("%d PShapes added!", this.shapeList.size()-shapeSize));
+
     }
 
     /**

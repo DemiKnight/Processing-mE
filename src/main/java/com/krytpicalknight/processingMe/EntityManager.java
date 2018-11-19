@@ -1,8 +1,9 @@
-import processing.core.PImage;
-import render.Entity;
-import render.RenderManager;
-import render.ResourceManager;
-import render.ResourceRequirements;
+package com.krytpicalknight.processingMe;
+
+import com.krytpicalknight.processingMe.render.Entity;
+import com.krytpicalknight.processingMe.render.RenderManager;
+import com.krytpicalknight.processingMe.render.ResourceManager;
+import com.krytpicalknight.processingMe.render.ResourceRequirements;
 
 import java.util.LinkedList;
 import java.util.List;
