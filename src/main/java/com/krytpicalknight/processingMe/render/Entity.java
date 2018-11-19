@@ -1,4 +1,4 @@
-package render;
+package com.krytpicalknight.processingMe.render;
 
 import processing.core.PApplet;
 
@@ -11,6 +11,8 @@ import processing.core.PApplet;
  * @see RenderManager
  */
 public class Entity {
+
+    protected static String ID = "Entity";
 
     /**
      * States whether the entity is being rendered or just existing in memory.
@@ -58,7 +60,7 @@ public class Entity {
      * Controls whether the entity should be updated on this pass, and whether it should be <i>halted</i>.
      *
      * todo Control whether the the instance needs to be updated, depending on whether any variables have changed.
-     * @implNote Must only contain conditions for the entity to render, may be used to change <tt>renderState</tt>
+     * @implNote Must only contain conditions for the entity to com.krytpicalknight.processingMe.render, may be used to change <tt>renderState</tt>
      * @return <tt>true</tt> if all entity update conditions are met.
      */
     private boolean canUpdate()
