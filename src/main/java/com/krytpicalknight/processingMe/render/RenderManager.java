@@ -1,4 +1,4 @@
-package render;
+package com.krytpicalknight.processingMe.render;
 
 import processing.core.PApplet;
 
@@ -23,20 +23,24 @@ public class RenderManager {
     private List<Entity> renderList;
 
     /**
-     * Will hold the <i>index location</i> of the entities to update before each render pass. Will use <tt>updateEntities()</tt>
+     * Will hold the <i>index location</i> of the entities to update before each com.krytpicalknight.processingMe.render pass. Will use <tt>updateEntities()</tt>
      * iterate and update all entities.
      */
     private List<Integer> updateList;
 
-    public RenderManager()
+    private ResourceManager resourceM;
+
+    public RenderManager(ResourceManager resourceManager)
     {
         renderList = new LinkedList<Entity>();
         updateList = new LinkedList<Integer>();
+        this.resourceM = resourceManager;
+
         //Linked list will be used as the collection type to allow for dynamic entity addition/subtraction
     }
 
     /**
-     * Using <tt>renderList</tt> will iterate through and run the <tt>render()</tt> method on each entity in the list.
+     * Using <tt>renderList</tt> will iterate through and run the <tt>com.krytpicalknight.processingMe.render()</tt> method on each entity in the list.
      * @apiNote Will run <tt>updateEntities()</tt> every frame to update necessary components.
      */
     public void renderFrame()

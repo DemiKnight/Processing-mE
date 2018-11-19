@@ -1,4 +1,6 @@
-import util.JsonReader;
+package com.krytpicalknight.processingMe;
+
+import com.krytpicalknight.processingMe.util.JsonReader;
 
 public class ConfigManager {
 

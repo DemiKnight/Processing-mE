@@ -1,5 +1,9 @@
-import render.Entity;
-import render.RenderManager;
+package com.krytpicalknight.processingMe;
+
+import com.krytpicalknight.processingMe.render.Entity;
+import com.krytpicalknight.processingMe.render.RenderManager;
+import com.krytpicalknight.processingMe.render.ResourceManager;
+import com.krytpicalknight.processingMe.render.ResourceRequirements;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -23,11 +27,13 @@ public class EntityManager {
      */
     private RenderManager renderManager;
 
+    private ResourceManager resourceM;
 
 
-    public EntityManager(RenderManager renderM)
+    public EntityManager(RenderManager renderM, ResourceManager resourceManager)
     {
         this.renderManager = renderM;
+        this.resourceM = resourceManager;
 
         entityList = new LinkedList<>();
     }
@@ -35,6 +41,14 @@ public class EntityManager {
    public void Registry(EntityRegistry intendedRegistry)
    {
        intendedRegistry.RegisterEntities(this);
+   }
+
+   public void registerResource()
+   {
+       for (Entity entSelect: entityList )
+       {
+           if (entSelect instanceof ResourceRequirements) resourceM.addResource((ResourceRequirements) entSelect);
+       }
    }
 
    public void addToRegistry(Entity entToAdd)
