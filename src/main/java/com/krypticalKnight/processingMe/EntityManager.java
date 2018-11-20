@@ -1,8 +1,8 @@
-package com.krytpicalKnight.processingMe;
+package com.krypticalKnight.processingMe;
 
-import com.krytpicalKnight.processingMe.render.Entity;
-import com.krytpicalKnight.processingMe.render.RenderManager;
-import com.krytpicalKnight.processingMe.render.ResourceManager;
+import com.krypticalKnight.processingMe.render.Entity;
+import com.krypticalKnight.processingMe.render.RenderManager;
+import com.krypticalKnight.processingMe.render.ResourceManager;
 import processing.core.PApplet;
 
 import java.util.HashMap;

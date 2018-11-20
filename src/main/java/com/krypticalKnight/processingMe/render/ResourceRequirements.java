@@ -1,4 +1,4 @@
-package com.krytpicalKnight.processingMe.render;
+package com.krypticalKnight.processingMe.render;
 
 import java.util.HashMap;
 

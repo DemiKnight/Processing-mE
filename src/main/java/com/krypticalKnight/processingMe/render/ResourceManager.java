@@ -1,4 +1,4 @@
-package com.krytpicalKnight.processingMe.render;
+package com.krypticalKnight.processingMe.render;
 
 import org.jetbrains.annotations.Contract;
 import processing.core.PImage;
