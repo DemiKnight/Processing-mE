@@ -7,7 +7,7 @@ import processing.core.PApplet;
 
 public class MainApp extends PApplet{
 
-    private static String version = "0.0.4";
+    private static String version = "0.0.5";
 
     private static ResourceManager resourceM = new ResourceManager();
     protected static EntityManager entityM /*= new EntityManager(renderM,resourceM)*/;
@@ -21,8 +21,7 @@ public class MainApp extends PApplet{
 
     public void preInit()
     {
-//        resourceM = new ResourceManager();
-
+        //Allows processing functions to be called throughout the application
         instance = this;
 
         renderM = new RenderManager(resourceM);
@@ -31,7 +30,6 @@ public class MainApp extends PApplet{
 
     public void init()
     {
-//        System.out.println("Init Started");
         renderM.init();
         entityM.giveParentInstance(this);
 

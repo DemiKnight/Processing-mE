@@ -1,23 +1,13 @@
 package com.krytpicalknight.processingMe.render;
 
 import processing.core.PImage;
-import processing.core.PShape;
 
-import java.util.List;
+import java.util.HashMap;
 
+/**
+ *
+ */
 public interface ResourceRequirements {
-
-    /**
-     * @deprecated
-     * @param pImageList
-     */
-    default void registerResourcesPImage(List<PImage> pImageList) {}
-
-    /**
-     * @deprecated
-     * @param pShapeList
-     */
-    default void registerResourcesPShape(List<PShape> pShapeList){}
 
     /**
      *
@@ -25,5 +15,14 @@ public interface ResourceRequirements {
      */
     default void registerResources(ResourceManager resourceManager){}
 
+    /**
+     * Identifty the a specific texture relevant to the Entity
+     */
+    enum textures{};
+
+    /**
+     * The map that stores the link between a relvant texture for that entity and the entire entity cache in ResourceManager.
+     */
+    HashMap<ResourceRequirements.textures, Integer> textureMap = new HashMap<>();
 
 }

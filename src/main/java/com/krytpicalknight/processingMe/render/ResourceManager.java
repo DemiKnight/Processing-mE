@@ -1,8 +1,10 @@
 package com.krytpicalknight.processingMe.render;
 
+import org.jetbrains.annotations.Contract;
 import processing.core.PImage;
 import processing.core.PShape;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -27,31 +29,31 @@ public class ResourceManager {
     /**
      * The List storing all the image data. Using the processing class PImage.
      */
-    private List<PImage> imageList;
+    private static List<PImage> imageList = new LinkedList<>();;
 
     /**
      * The list storing all the shape data. Using the processing class PShape
      */
-    private List<PShape> shapeList;
+    private static List<PShape> shapeList = new LinkedList<>();
 
-    private List<String> pathStore;
+//    private HashMap<String, Integer> nameStore;
 
     /**
      *
      */
     public ResourceManager()
     {
-
-        this.shapeList = new LinkedList<>();
-        this.imageList = new LinkedList<>();
+        
     }
 
-    public PImage getPImageResource(int index)
+    @Contract(pure = true)
+    public static PImage getPImageResource(int index)
     {
         return imageList.get(index);
     }
 
-    public PShape getPShapeResource(int index)
+    @Contract(pure = true)
+    public static PShape getPShapeResource(int index)
     {
         return shapeList.get(index);
     }
@@ -62,24 +64,22 @@ public class ResourceManager {
      */
     public void addResource(ResourceRequirements resourceRequired)
     {
-        int imageSize = this.imageList.size();
-        int shapeSize = this.shapeList.size();
+        int imageSize = imageList.size();
+        int shapeSize = shapeList.size();
 
-        resourceRequired.registerResourcesPImage(this.imageList);
-        resourceRequired.registerResourcesPShape(this.shapeList);
         resourceRequired.registerResources(this);
 
-        System.out.print(String.format("%d PImages & ", this.imageList.size()-imageSize));
-        System.out.println(String.format("%d PShapes added!", this.shapeList.size()-shapeSize));
+        System.out.print(String.format("%d PImages & ", imageList.size()-imageSize));
+        System.out.println(String.format("%d PShapes added!", shapeList.size()-shapeSize));
     }
 
     /**
      * Will add the given image, using <tt>loadImage()</tt>, to the list and make it available for use.
      * @param resource The PImage to be stored.
      */
-    public void addResource(PImage resource)
+    public static void addResource(PImage resource)
     {
-        this.imageList.add(resource);
+        imageList.add(resource);
     }
 
     /**
@@ -88,7 +88,7 @@ public class ResourceManager {
      */
     public void addResource(PShape resource)
     {
-        this.shapeList.add(resource);
+        shapeList.add(resource);
     }
 
     /**
@@ -98,11 +98,11 @@ public class ResourceManager {
      */
     public int addResourceI(PImage resource)
     {
-        if (!imageList.contains(resource)) this.imageList.add(resource);
+        if (!imageList.contains(resource)) imageList.add(resource);
 
-        return this.imageList.size() - 1;
+        return imageList.size() - 1;
     }
-
+    
     /**
      * WIll add the shape, using <tt>loadShape()</tt>, to the list and make it available for use.
      * @param resource The PShape to be stored
@@ -110,11 +110,11 @@ public class ResourceManager {
      */
     public int addResourceI(PShape resource)
     {
-        if (!shapeList.contains(resource)) this.shapeList.add(resource);
+        if (!shapeList.contains(resource)) shapeList.add(resource);
 
-        return this.imageList.size() - 1;
+        return imageList.size() - 1;
     }
-
+    
     /**
      * Remove a resource from the Resource Manager, specifically from the image Store
      * @param resourceToRemove The resource to remove from the imageList
