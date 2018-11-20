@@ -1,7 +1,5 @@
 package com.krytpicalknight.processingMe.render;
 
-import com.krytpicalknight.processingMe.MainApp;
-import processing.core.PApplet;
 import processing.core.PImage;
 import processing.core.PShape;
 

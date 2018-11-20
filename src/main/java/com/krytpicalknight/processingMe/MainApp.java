@@ -1,21 +1,16 @@
 package com.krytpicalknight.processingMe;
 
-import processing.core.PApplet;
 import com.krytpicalknight.processingMe.render.RenderManager;
 import com.krytpicalknight.processingMe.render.ResourceManager;
-import com.krypticalKnight.testApp.entities.TestEntity;
+import processing.core.PApplet;
 
 public class MainApp extends PApplet{
 
     private static String version = "0.0.4";
 
-//    private com.krytpicalknight.processingMe.ConfigManager configM = new com.krytpicalknight.processingMe.ConfigManager();
-
-    protected static RenderManager renderM;
+    private static RenderManager renderM;
     protected static EntityManager entityM;
-    protected static ResourceManager resourceM;
-    private PApplet instance;
-
+    private static ResourceManager resourceM;
 
     public static void main(String[] args)
     {
