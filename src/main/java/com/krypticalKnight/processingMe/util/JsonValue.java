@@ -1,4 +1,4 @@
-package com.krytpicalKnight.processingMe.util;
+package com.krypticalKnight.processingMe.util;
 
 import java.lang.reflect.Array;
 

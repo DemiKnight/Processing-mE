@@ -1,6 +1,6 @@
-package com.krytpicalKnight.processingMe.render;
+package com.krypticalKnight.processingMe.render;
 
-import com.krytpicalKnight.processingMe.MainApp;
+import com.krypticalKnight.processingMe.MainApp;
 import processing.core.PApplet;
 
 import java.util.LinkedList;

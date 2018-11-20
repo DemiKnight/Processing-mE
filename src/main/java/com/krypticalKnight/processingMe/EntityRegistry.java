@@ -1,4 +1,4 @@
-package com.krytpicalKnight.processingMe;
+package com.krypticalKnight.processingMe;
 
 /**
  * When a game/application wants to register their Entities, implementing this will then allow the
