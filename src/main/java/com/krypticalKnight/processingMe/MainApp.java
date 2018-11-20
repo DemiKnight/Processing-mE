@@ -1,7 +1,8 @@
-package com.krytpicalKnight.processingMe;
+package com.krypticalKnight.processingMe;
 
-import com.krytpicalKnight.processingMe.render.RenderManager;
-import com.krytpicalKnight.processingMe.render.ResourceManager;
+import com.krypticalKnight.processingMe.render.RenderManager;
+import com.krypticalKnight.processingMe.render.ResourceManager;
+import com.krypticalKnight.processingMe.util.Logger;
 import org.jetbrains.annotations.Contract;
 import processing.core.PApplet;
 
@@ -12,32 +13,47 @@ public class MainApp extends PApplet{
     private static ResourceManager resourceM = new ResourceManager();
     protected static EntityManager entityM /*= new EntityManager(renderM,resourceM)*/;
     private static RenderManager renderM;
+
     private static PApplet instance;
+
+    public static Logger mainLogger = new Logger("Processing-Me");
+
 
     public static void main(String[] args)
     {
-        PApplet.main("MainApp");
+        mainLogger.LogInformation("Processing-Me Started! Made By Alex Knight");
+        PApplet.main("com.krypticalKnight.processingMe.MainApp");
+
     }
 
     public void preInit()
     {
+        mainLogger.LogInformation("Pre Init :: Start");
         //Allows processing functions to be called throughout the application
         instance = this;
 
         renderM = new RenderManager(resourceM);
         entityM = new EntityManager(renderM,resourceM);
+        mainLogger.LogInformation("Pre Init :: End");
     }
 
     public void init()
     {
+        mainLogger.LogInformation("Init :: Start");
+
         renderM.init();
         entityM.giveParentInstance(this);
+
+        mainLogger.LogInformation("Init :: End");
 
     }
 
     public void postInit()
     {
-        //WIP
+        mainLogger.LogInformation("Post Init :: Start");
+
+
+        mainLogger.LogInformation("Pre Init :: End");
     }
 
     public void settings()
