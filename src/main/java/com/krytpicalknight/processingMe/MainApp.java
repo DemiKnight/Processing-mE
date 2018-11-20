@@ -3,7 +3,7 @@ package com.krytpicalknight.processingMe;
 import processing.core.PApplet;
 import com.krytpicalknight.processingMe.render.RenderManager;
 import com.krytpicalknight.processingMe.render.ResourceManager;
-import com.krytpicalknight.processingMe.test.TestEntity;
+import com.krypticalKnight.testApp.entities.TestEntity;
 
 public class MainApp extends PApplet{
 
@@ -11,38 +11,35 @@ public class MainApp extends PApplet{
 
 //    private com.krytpicalknight.processingMe.ConfigManager configM = new com.krytpicalknight.processingMe.ConfigManager();
 
-    private static RenderManager renderM;
-    private static EntityManager entityM;
-    private static ResourceManager resourceM;
-    private static PApplet instance;
+    protected static RenderManager renderM;
+    protected static EntityManager entityM;
+    protected static ResourceManager resourceM;
+    private PApplet instance;
 
 
     public static void main(String[] args)
     {
-        resourceM = new ResourceManager(instance);
-        renderM = new RenderManager(resourceM);
-        entityM = new EntityManager(renderM,resourceM);
         PApplet.main("com.krytpicalknight.processingMe.MainApp");
     }
 
-    private void preInit()
+    public void preInit()
     {
-//        System.out.println("Pre-init started");
-        instance = this;
-
-        TestEntity test1 = new TestEntity(this);
-
-        entityM.addToRegistry(test1,true);
-
-//        System.out.println("Pre-Init ended");
+        resourceM = new ResourceManager();
+        renderM = new RenderManager(resourceM);
+        entityM = new EntityManager(renderM,resourceM);
     }
 
-    private void init()
+    public void init()
     {
 //        System.out.println("Init Started");
         entityM.registerResource();
+        entityM.giveParentInstance(this);
 
+    }
 
+    public void postInit()
+    {
+        //WIP
     }
 
     public void settings()
@@ -60,7 +57,6 @@ public class MainApp extends PApplet{
     public void draw()
     {
         renderM.clear(this);
-
         renderM.renderFrame();
     }
 

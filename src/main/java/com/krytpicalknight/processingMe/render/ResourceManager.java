@@ -1,5 +1,6 @@
 package com.krytpicalknight.processingMe.render;
 
+import com.krytpicalknight.processingMe.MainApp;
 import processing.core.PApplet;
 import processing.core.PImage;
 import processing.core.PShape;
@@ -38,15 +39,14 @@ public class ResourceManager {
     /**
      * LInk to the parent processing instance.
      */
-    private PApplet parent;
+//    private PApplet parent;
 
     /**
      *
-     * @param PAppletP A link to the parent processing instance.
      */
-    public ResourceManager(PApplet PAppletP)
+    public ResourceManager()
     {
-        this.parent = PAppletP;
+//        this.parent = PAppletP;
 
         this.shapeList = new LinkedList<>();
         this.imageList = new LinkedList<>();

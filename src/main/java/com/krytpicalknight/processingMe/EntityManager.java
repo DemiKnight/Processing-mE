@@ -4,6 +4,7 @@ import com.krytpicalknight.processingMe.render.Entity;
 import com.krytpicalknight.processingMe.render.RenderManager;
 import com.krytpicalknight.processingMe.render.ResourceManager;
 import com.krytpicalknight.processingMe.render.ResourceRequirements;
+import processing.core.PApplet;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -29,10 +30,12 @@ public class EntityManager {
 
     private ResourceManager resourceM;
 
+//    private PApplet parent;
 
     public EntityManager(RenderManager renderM, ResourceManager resourceManager)
     {
         this.renderManager = renderM;
+//        this.parent = P;
         this.resourceM = resourceManager;
 
         entityList = new LinkedList<>();
@@ -48,6 +51,14 @@ public class EntityManager {
        for (Entity entSelect: entityList )
        {
            if (entSelect instanceof ResourceRequirements) resourceM.addResource((ResourceRequirements) entSelect);
+       }
+   }
+
+   public void giveParentInstance(PApplet PA)
+   {
+       for (Entity entitySelected:entityList)
+       {
+           entitySelected.setParentProcessing(PA);
        }
    }
 

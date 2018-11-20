@@ -39,6 +39,19 @@ public class Entity {
     }
 
     /**
+     * Will be used when the parent Processing instance is set later on.
+     */
+    public Entity()
+    {
+
+    }
+
+    public void setParentProcessing(PApplet p)
+    {
+        this.parent = p;
+    }
+
+    /**
      * The x Location of the entity
      */
     public float xLocation = 0;
