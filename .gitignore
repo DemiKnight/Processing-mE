@@ -18,5 +18,5 @@ gradle-app.setting
 
 lib/
 
-/src/main/java/com/krypticalKnight/testApp/
-/src/main/resources/com.krypticalKnight.testApp/
+#/src/main/java/com/krypticalKnight/testApp/
+#/src/main/resources/com.krypticalKnight.testApp/
