@@ -8,6 +8,4 @@ package com.krytpicalknight.processingMe;
 public interface EntityRegistry {
 
     void RegisterEntities(EntityManager manager);
-
-
 }

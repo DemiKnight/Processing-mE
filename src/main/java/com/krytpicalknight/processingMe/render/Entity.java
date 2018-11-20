@@ -12,7 +12,14 @@ import processing.core.PApplet;
  */
 public class Entity {
 
-    protected static String ID = "Entity";
+    /**
+     * Set's an ID for the entity, allow for quick lookup.
+     */
+    private final String ID = "Entity";
+
+    public String getID() {
+        return this.ID;
+    }
 
     /**
      * States whether the entity is being rendered or just existing in memory.
@@ -30,12 +37,22 @@ public class Entity {
     protected PApplet parent;
 
     /**
-     * BY default only sets up the parent processing instance
-     * @param P main processing instance
+     * Will be used when the parent Processing instance is set later on.
      */
-    public Entity(PApplet P)
+    public Entity()
     {
-        this.parent = P;
+
+    }
+
+    /**
+     * Will allow entity to draw to the main processing window.
+     *
+     * Not needed if the entity does not interact with Processing
+     * @param p Sets the pointer to the main Processing instance, used to interact with the draw window.
+     */
+    public void setParentProcessing(PApplet p)
+    {
+        this.parent = p;
     }
 
     /**
@@ -76,4 +93,5 @@ public class Entity {
     {
         if(!canUpdate()) return;
     }
+
 }
