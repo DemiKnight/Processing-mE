@@ -89,7 +89,7 @@ public class EntityManager {
    }
 
     /**
-     * 
+     *
      */
    public void registerIDs()
    {
@@ -97,7 +97,6 @@ public class EntityManager {
 
        for (int index = 0; index < entityList.size();index++)
        {
-//           String temp = String.format("%d:%s", index, entityList.get(index).getID());
            nameLookup.put(String.format("%d:%s", index, entityList.get(index).getID()), index);
        }
    }
@@ -111,7 +110,7 @@ public class EntityManager {
    public void addToRegistry(Entity entToAdd)
    {
        entityList.add(entToAdd);
-       renderManager.addToRender(entToAdd,true);
+       renderManager.addToRender(entityList.size()-1,true);
    }
 
     /**
@@ -124,7 +123,7 @@ public class EntityManager {
    public void addToRegistry(Entity entToAdd, boolean willUpdate)
    {
        entityList.add(entToAdd);
-       renderManager.addToRender(entToAdd, willUpdate);
+       renderManager.addToRender(entityList.size()-1, willUpdate);
    }
 
     /**

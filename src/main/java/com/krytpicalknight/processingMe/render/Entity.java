@@ -15,10 +15,10 @@ public class Entity {
     /**
      * Set's an ID for the entity, allow for quick lookup.
      */
-    private final String ID = "Entity";
+    private static String ID = "Entity";
 
     public String getID() {
-        return this.ID;
+        return Entity.ID;
     }
 
     /**

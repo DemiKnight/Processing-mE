@@ -1,5 +1,7 @@
 package com.krytpicalknight.processingMe.render;
 
+import com.krytpicalknight.processingMe.EntityManager;
+import com.krytpicalknight.processingMe.MainApp;
 import processing.core.PApplet;
 
 import java.util.Iterator;
@@ -20,7 +22,7 @@ public class RenderManager {
      * Will hold the entities that are in need of being rendered. Every frame, it will call <tt>renderFrame()</tt>
      * TODO MOve the entities into their own Entity Manager, to move towards game and graphic seperation.
      */
-    private List<Entity> renderList;
+    private List<Integer> renderList;
 
     /**
      * Will hold the <i>index location</i> of the entities to update before each com.krytpicalknight.processingMe.render pass. Will use <tt>updateEntities()</tt>
@@ -32,8 +34,9 @@ public class RenderManager {
 
     public RenderManager(ResourceManager resourceManager)
     {
-        renderList = new LinkedList<Entity>();
-        updateList = new LinkedList<Integer>();
+        this.renderList = new LinkedList<Integer>();
+        this.updateList = new LinkedList<Integer>();
+//        this.entityManager = entityM;
         this.resourceM = resourceManager;
 
         //Linked list will be used as the collection type to allow for dynamic entity addition/subtraction
@@ -47,9 +50,9 @@ public class RenderManager {
     {
         updateEntities();
 
-        for (Entity selectEntity: renderList)
+        for (Integer indexPointer: renderList)
         {
-            selectEntity.render();
+            MainApp.getEntityM().getEntity(indexPointer).render();
         }
     }
 
@@ -66,13 +69,13 @@ public class RenderManager {
         {
             tempInt = integerIterator.next();
 
-            if (renderList.get(tempInt).renderState == RENDER_STATES.halted)
+            if (MainApp.getEntityM().getEntity(tempInt).renderState == RENDER_STATES.halted)
             {
                 integerIterator.remove();
             }
             else
             {
-                renderList.get(tempInt).update();
+                MainApp.getEntityM().getEntity(tempInt).update();
             }
         }
     }
@@ -88,7 +91,7 @@ public class RenderManager {
         parent.background(155);
     }
 
-    public void addToRender(Entity entToAdd, boolean update)
+    public void addToRender(Integer entToAdd, boolean update)
     {
         renderList.add(entToAdd);
         if(update) updateList.add(renderList.size()-1);

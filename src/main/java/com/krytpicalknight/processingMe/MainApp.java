@@ -2,15 +2,16 @@ package com.krytpicalknight.processingMe;
 
 import com.krytpicalknight.processingMe.render.RenderManager;
 import com.krytpicalknight.processingMe.render.ResourceManager;
+import org.jetbrains.annotations.Contract;
 import processing.core.PApplet;
 
 public class MainApp extends PApplet{
 
     private static String version = "0.0.4";
 
-    private static RenderManager renderM;
-    protected static EntityManager entityM;
-    private static ResourceManager resourceM;
+    private static ResourceManager resourceM = new ResourceManager();
+    protected static EntityManager entityM /*= new EntityManager(renderM,resourceM)*/;
+    private static RenderManager renderM = new RenderManager(resourceM, entityM);
 
     public static void main(String[] args)
     {
@@ -19,8 +20,8 @@ public class MainApp extends PApplet{
 
     public void preInit()
     {
-        resourceM = new ResourceManager();
-        renderM = new RenderManager(resourceM);
+//        resourceM = new ResourceManager();
+//        renderM = new RenderManager(resourceM, entityM);
         entityM = new EntityManager(renderM,resourceM);
     }
 
@@ -55,4 +56,8 @@ public class MainApp extends PApplet{
         renderM.renderFrame();
     }
 
+    @Contract(pure = true)
+    public static EntityManager getEntityM() {
+        return entityM;
+    }
 }
