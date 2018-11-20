@@ -1,4 +1,4 @@
-package com.krytpicalknight.processingMe.render;
+package com.krytpicalKnight.processingMe.render;
 
 import processing.core.PApplet;
 

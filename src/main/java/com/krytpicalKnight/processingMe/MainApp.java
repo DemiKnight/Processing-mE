@@ -1,7 +1,7 @@
-package com.krytpicalknight.processingMe;
+package com.krytpicalKnight.processingMe;
 
-import com.krytpicalknight.processingMe.render.RenderManager;
-import com.krytpicalknight.processingMe.render.ResourceManager;
+import com.krytpicalKnight.processingMe.render.RenderManager;
+import com.krytpicalKnight.processingMe.render.ResourceManager;
 import org.jetbrains.annotations.Contract;
 import processing.core.PApplet;
 
@@ -16,7 +16,7 @@ public class MainApp extends PApplet{
 
     public static void main(String[] args)
     {
-        PApplet.main("com.krytpicalknight.processingMe.MainApp");
+        PApplet.main("MainApp");
     }
 
     public void preInit()

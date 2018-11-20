@@ -61,7 +61,7 @@
 											"top": 255,
 											"width": 54.8818359375,
 											"height": 13,
-											"text": "com.krytpicalknight.processingMe.MainApp"
+											"text": "MainApp"
 										},
 										{
 											"_type": "LabelView",
@@ -536,7 +536,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "com.krytpicalknight.processingMe.MainApp"
+					"name": "MainApp"
 				},
 				{
 					"_type": "UMLClass",

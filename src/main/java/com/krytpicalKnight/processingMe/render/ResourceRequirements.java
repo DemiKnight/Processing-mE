@@ -1,6 +1,4 @@
-package com.krytpicalknight.processingMe.render;
-
-import processing.core.PImage;
+package com.krytpicalKnight.processingMe.render;
 
 import java.util.HashMap;
 

@@ -1,4 +1,4 @@
-package com.krytpicalknight.processingMe.render;
+package com.krytpicalKnight.processingMe.render;
 
 /**
  * The states that would effect how the entity would be rendered.
