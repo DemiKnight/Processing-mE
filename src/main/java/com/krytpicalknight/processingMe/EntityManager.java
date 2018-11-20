@@ -3,7 +3,6 @@ package com.krytpicalknight.processingMe;
 import com.krytpicalknight.processingMe.render.Entity;
 import com.krytpicalknight.processingMe.render.RenderManager;
 import com.krytpicalknight.processingMe.render.ResourceManager;
-import com.krytpicalknight.processingMe.render.ResourceRequirements;
 import processing.core.PApplet;
 
 import java.util.HashMap;
@@ -25,6 +24,12 @@ public class EntityManager {
     private List<Entity> entityList;
 
     /**
+     * Will hold the <i>index location</i> of the entities to update before each com.krytpicalknight.processingMe.render pass. Will use <tt>updateEntities()</tt>
+     * iterate and update all entities.
+     */
+    private List<Integer> updateList;
+
+    /**
      * Used to lookup the Entity ID's to the relvant ones store within the <tt>entityList</tt>.
      */
     private HashMap<String, Integer> nameLookup;
@@ -37,7 +42,7 @@ public class EntityManager {
     /**
      * Reference to the ResourceManager, allowing any resources required by a entity to be stored here.
      */
-    private ResourceManager resourceM;
+//    private ResourceManager resourceM;
 
     /**
      * To initialise all variables and references.
@@ -47,7 +52,8 @@ public class EntityManager {
     public EntityManager(RenderManager renderM, ResourceManager resourceManager)
     {
         this.renderManager = renderM;
-        this.resourceM = resourceManager;
+//        this.resourceM = resourceManager;
+        this.updateList = new LinkedList<Integer>();
 
         entityList = new LinkedList<>();
     }
@@ -60,19 +66,6 @@ public class EntityManager {
    public void Registry(EntityRegistry intendedRegistry)
    {
        intendedRegistry.RegisterEntities(this);
-   }
-
-    /**
-     * Gather and store all resources required by the application.
-     *
-     * @implNote To be called after all entities are stored.
-     */
-   public void registerResource()
-   {
-       for (Entity entSelect: entityList )
-       {
-           if (entSelect instanceof ResourceRequirements) resourceM.addResource((ResourceRequirements) entSelect);
-       }
    }
 
     /**
@@ -101,6 +94,14 @@ public class EntityManager {
        }
    }
 
+   public void updateEntities()
+   {
+       for (Entity entSelect: entityList)
+       {
+           entSelect.update();
+       }
+   }
+
     /**
      * Add entity to registry & setup with <tt>renderManager</tt>
      * By default, will also setup the entity to update every frame.
@@ -110,7 +111,8 @@ public class EntityManager {
    public void addToRegistry(Entity entToAdd)
    {
        entityList.add(entToAdd);
-       renderManager.addToRender(entityList.size()-1,true);
+       renderManager.addToRender(entityList.size()-1);
+       updateList.add(entityList.size()-1);
    }
 
     /**
@@ -123,7 +125,8 @@ public class EntityManager {
    public void addToRegistry(Entity entToAdd, boolean willUpdate)
    {
        entityList.add(entToAdd);
-       renderManager.addToRender(entityList.size()-1, willUpdate);
+       renderManager.addToRender(entityList.size()-1);
+       if (willUpdate) updateList.add(entityList.size()-1);
    }
 
     /**
@@ -145,4 +148,19 @@ public class EntityManager {
        return this.entityList;
    }
 
+    public void addToUpdate(Integer indexOfEnt)
+    {
+        updateList.add(indexOfEnt);
+    }
+
+    public void addToUpdate(Entity entToAdd)
+    {
+        if(entityList.contains(entToAdd))
+        {
+            updateList.add(entityList.indexOf(entToAdd));
+        }
+    }
+
 }
+
+

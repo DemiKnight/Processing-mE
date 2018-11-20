@@ -11,7 +11,8 @@ public class MainApp extends PApplet{
 
     private static ResourceManager resourceM = new ResourceManager();
     protected static EntityManager entityM /*= new EntityManager(renderM,resourceM)*/;
-    private static RenderManager renderM = new RenderManager(resourceM, entityM);
+    private static RenderManager renderM;
+    private static PApplet instance;
 
     public static void main(String[] args)
     {
@@ -21,14 +22,17 @@ public class MainApp extends PApplet{
     public void preInit()
     {
 //        resourceM = new ResourceManager();
-//        renderM = new RenderManager(resourceM, entityM);
+
+        instance = this;
+
+        renderM = new RenderManager(resourceM);
         entityM = new EntityManager(renderM,resourceM);
     }
 
     public void init()
     {
 //        System.out.println("Init Started");
-        entityM.registerResource();
+        renderM.init();
         entityM.giveParentInstance(this);
 
     }
@@ -52,6 +56,8 @@ public class MainApp extends PApplet{
 
     public void draw()
     {
+        entityM.updateEntities();
+
         renderM.clear(this);
         renderM.renderFrame();
     }
@@ -59,5 +65,11 @@ public class MainApp extends PApplet{
     @Contract(pure = true)
     public static EntityManager getEntityM() {
         return entityM;
+    }
+
+    @Contract(pure = true)
+    public static PApplet getInstance()
+    {
+        return instance;
     }
 }

@@ -34,17 +34,13 @@ public class ResourceManager {
      */
     private List<PShape> shapeList;
 
-    /**
-     * LInk to the parent processing instance.
-     */
-//    private PApplet parent;
+    private List<String> pathStore;
 
     /**
      *
      */
     public ResourceManager()
     {
-//        this.parent = PAppletP;
 
         this.shapeList = new LinkedList<>();
         this.imageList = new LinkedList<>();
@@ -60,7 +56,10 @@ public class ResourceManager {
         return shapeList.get(index);
     }
 
-
+    /**
+     * Used to add the resources required by each function.
+     * @param resourceRequired The entity with the <tt>registerResourcesPImage(List<PImage> pImageList)</tt> function.
+     */
     public void addResource(ResourceRequirements resourceRequired)
     {
         int imageSize = this.imageList.size();
@@ -68,10 +67,10 @@ public class ResourceManager {
 
         resourceRequired.registerResourcesPImage(this.imageList);
         resourceRequired.registerResourcesPShape(this.shapeList);
+        resourceRequired.registerResources(this);
 
         System.out.print(String.format("%d PImages & ", this.imageList.size()-imageSize));
         System.out.println(String.format("%d PShapes added!", this.shapeList.size()-shapeSize));
-
     }
 
     /**
@@ -99,7 +98,8 @@ public class ResourceManager {
      */
     public int addResourceI(PImage resource)
     {
-        this.imageList.add(resource);
+        if (!imageList.contains(resource)) this.imageList.add(resource);
+
         return this.imageList.size() - 1;
     }
 
@@ -110,7 +110,8 @@ public class ResourceManager {
      */
     public int addResourceI(PShape resource)
     {
-        this.shapeList.add(resource);
+        if (!shapeList.contains(resource)) this.shapeList.add(resource);
+
         return this.imageList.size() - 1;
     }
 
