@@ -4,6 +4,7 @@ import org.jetbrains.annotations.Contract;
 import processing.core.PImage;
 import processing.core.PShape;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -36,14 +37,25 @@ public class ResourceManager {
      */
     private static List<PShape> shapeList = new LinkedList<>();
 
-//    private HashMap<String, Integer> nameStore;
+    /**
+     * Contains the ID for each image, generated using <tt>hashCode</tt>
+     * <ul>
+     *     <li>
+     *         <tt>String</tt> - Hash Code
+     *     </li>
+     *     <li>
+     *         <tt>Integer</tt> - The Index of the relating image within the List.
+     *     </li>
+     * </ul>
+     */
+    private HashMap<String, Integer> nameStore;
 
     /**
      *
      */
     public ResourceManager()
     {
-        
+        nameStore = new HashMap<>();
     }
 
     @Contract(pure = true)
@@ -77,9 +89,14 @@ public class ResourceManager {
      * Will add the given image, using <tt>loadImage()</tt>, to the list and make it available for use.
      * @param resource The PImage to be stored.
      */
-    public static void addResource(PImage resource)
+    public void addResource(PImage resource)
     {
-        imageList.add(resource);
+
+        if (!nameStore.containsKey(String.valueOf(Arrays.hashCode(resource.pixels))))
+        {
+            imageList.add(resource);
+            nameStore.put(String.valueOf(Arrays.hashCode(resource.pixels)),imageList.size() - 1);
+        }
     }
 
     /**
@@ -89,6 +106,14 @@ public class ResourceManager {
     public void addResource(PShape resource)
     {
         shapeList.add(resource);
+        if (nameStore.containsKey(String.valueOf(Arrays.hashCode(resource.getParams()))))
+        {
+            shapeList.add(resource);
+            nameStore.put(
+                    String.valueOf(Arrays.hashCode(resource.getParams())),
+                    shapeList.size() - 1
+            );
+        }
     }
 
     /**
@@ -98,7 +123,11 @@ public class ResourceManager {
      */
     public int addResourceI(PImage resource)
     {
-        if (!imageList.contains(resource)) imageList.add(resource);
+        if (!nameStore.containsKey(String.valueOf(Arrays.hashCode(resource.pixels))))
+        {
+            imageList.add(resource);
+            nameStore.put(String.valueOf(Arrays.hashCode(resource.pixels)),imageList.size() - 1);
+        }
 
         return imageList.size() - 1;
     }
@@ -110,9 +139,15 @@ public class ResourceManager {
      */
     public int addResourceI(PShape resource)
     {
-        if (!shapeList.contains(resource)) shapeList.add(resource);
-
-        return imageList.size() - 1;
+        if (nameStore.containsKey(String.valueOf(Arrays.hashCode(resource.getParams()))))
+        {
+            shapeList.add(resource);
+            nameStore.put(
+                    String.valueOf(Arrays.hashCode(resource.getParams())),
+                    shapeList.size() - 1
+            );
+        }
+        return shapeList.size() - 1;
     }
     
     /**
