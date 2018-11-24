@@ -40,7 +40,7 @@ public class ResourceManager {
      */
     private static List<PShape> shapeList = new LinkedList<>();
 
-    private List<String> pathStage;
+    private static List<String> pathStage = new LinkedList<>();
 
     /**
      * Contains the ID for each image, generated using <tt>hashCode</tt>
@@ -61,7 +61,6 @@ public class ResourceManager {
     public ResourceManager()
     {
         nameStore = new HashMap<>();
-        pathStage = new LinkedList<>();
     }
 
     @Contract(pure = true)
@@ -108,21 +107,21 @@ public class ResourceManager {
      * Add a given file to be loaded with the rest of the resources, is tested in case a duplicate exists.
      * @param pathToStage Path to resources needed by a Entity
      */
-    public void stagePath(String pathToStage)
+    public static void stagePath(String pathToStage)
     {
-        if (!this.pathStage.contains(pathToStage)) this.pathStage.add(pathToStage);
+        if (!pathStage.contains(pathToStage)) pathStage.add(pathToStage);
     }
 
     /**
      * Will load a resource and place within the relevant list.
      * @param pathToFile Path to resource to load
      */
-    private void loadResource(String pathToFile)
+    private static void loadResource(String pathToFile)
     {
 //        System.out.println(pathToFile.substring(pathToFile.indexOf('.')));
-        switch (pathToFile.substring(pathToFile.indexOf('.')+1)){
+        switch (pathToFile.substring(pathToFile.indexOf('.'))){
 
-            case "png": case "jpg": case "gif":
+            case ".png": case ".jpg": case ".gif":
 
                 imageList.add
                         (
@@ -149,7 +148,7 @@ public class ResourceManager {
     /**
      * Load all files found within the <tt>pathStage</tt> list.
      */
-    public void LoadResources()
+    public static void LoadResources()
     {
         for (String pathToLoad: pathStage)
         {

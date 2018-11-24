@@ -26,15 +26,13 @@ public class TestEntity extends Entity implements ResourceRequirements {
 
         this.yLocation =20;
         this.xLocation=20;
-
-//        TestEntity.ID = "TestEntity";
     }
 
 
     public void render()
     {
-        parent.image(
-                ResourceManager.getPImageResource(textureMap.get(textures.up)), this.xLocation,this.yLocation, 30,30);
+//        parent.image(
+//                ResourceManager.getPImageResource(textureMap.get(textures.up)), this.xLocation,this.yLocation, 30,30);
     }
 
     public void update()
@@ -43,11 +41,13 @@ public class TestEntity extends Entity implements ResourceRequirements {
     }
 
     public void registerResources(@NotNull ResourceManager manager) {
-        TestEntity.textureMap.put
-                (
-                textures.up,
-                manager.addResourceI(MainApp.getInstance().loadImage("com.krypticalKnight.testApp/UP.png"))
-                );
+        ResourceManager.stagePath("com.krypticalKnight.testApp/UP.png");
+
+//        TestEntity.textureMap.put
+//                (
+//                textures.up,
+//                manager.addResourceI(MainApp.getInstance().loadImage("com.krypticalKnight.testApp/UP.png"))
+//                );
     }
 
 }

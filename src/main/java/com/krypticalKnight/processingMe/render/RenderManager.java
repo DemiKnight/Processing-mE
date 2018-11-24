@@ -58,10 +58,11 @@ public class RenderManager {
      */
     private void registerResource()
     {
-        for (Entity entSelect: MainApp.getEntityM().getEntityList() )
-        {
-            if (entSelect instanceof ResourceRequirements) resourceM.addResource((ResourceRequirements) entSelect);
-        }
+        ResourceManager.LoadResources();
+//        for (Entity entSelect: MainApp.getEntityM().getEntityList() )
+//        {
+//            if (entSelect instanceof ResourceRequirements) resourceM.addResource((ResourceRequirements) entSelect);
+//        }
     }
 
     /**
