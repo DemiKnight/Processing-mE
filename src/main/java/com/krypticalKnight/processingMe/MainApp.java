@@ -41,9 +41,9 @@ public class MainApp extends PApplet{
     {
         mainLogger.LogInformation("Init :: Start");
 
-        renderM.init();
         entityM.giveParentInstance(this);
 
+        renderM.init();
         mainLogger.LogInformation("Init :: End");
 
     }
