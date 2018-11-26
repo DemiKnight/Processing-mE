@@ -1,6 +1,6 @@
-package com.krypticalKnight.processingMe;
+package com.krypticalKnight.processingMe.entities;
 
-import com.krypticalKnight.processingMe.render.Entity;
+import com.krypticalKnight.processingMe.EntityRegistry;
 import com.krypticalKnight.processingMe.render.RenderManager;
 import com.krypticalKnight.processingMe.render.ResourceManager;
 import processing.core.PApplet;
@@ -21,7 +21,7 @@ public class EntityManager {
     /**
      * Stores the all entities active in the application, including any rendered or unrendered.
      */
-    private List<Entity> entityList;
+    private static List<Entity> entityList;
 
     /**
      * Will hold the <i>index location</i> of the entities to update before each com.krytpicalknight.processingMe.render pass. Will use <tt>updateEntities()</tt>
@@ -137,7 +137,9 @@ public class EntityManager {
      */
    public Entity getEntity(int index) { return this.entityList.get(index); }
 
+   public static Entity getEntity(String ID) {return entityList.get(0);}
 
+    public static int getEntityIndex(String ID) {return 0;}
     /**
      *
      * @deprecated

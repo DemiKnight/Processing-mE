@@ -1,7 +1,7 @@
 package com.krypticalKnight.testApp;
 
 import com.krypticalKnight.testApp.entities.TestEntity;
-import com.krypticalKnight.processingMe.EntityManager;
+import com.krypticalKnight.processingMe.entities.EntityManager;
 import com.krypticalKnight.processingMe.EntityRegistry;
 
 public class EntRegister implements EntityRegistry {

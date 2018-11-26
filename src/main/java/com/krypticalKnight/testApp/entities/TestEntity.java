@@ -1,7 +1,6 @@
 package com.krypticalKnight.testApp.entities;
 
-import com.krypticalKnight.processingMe.MainApp;
-import com.krypticalKnight.processingMe.render.Entity;
+import com.krypticalKnight.processingMe.entities.Entity;
 import com.krypticalKnight.processingMe.render.ResourceManager;
 import com.krypticalKnight.processingMe.render.ResourceRequirements;
 import org.jetbrains.annotations.NotNull;
@@ -9,7 +8,6 @@ import org.jetbrains.annotations.NotNull;
 import java.util.HashMap;
 
 public class TestEntity extends Entity implements ResourceRequirements {
-
 
     enum textures{
         up
@@ -22,7 +20,7 @@ public class TestEntity extends Entity implements ResourceRequirements {
      * BY default only sets up the parent processing instance
      */
     public TestEntity() {
-
+        super("testEntity");
 
         this.yLocation =20;
         this.xLocation=20;

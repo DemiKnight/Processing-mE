@@ -1,5 +1,6 @@
 package com.krypticalKnight.processingMe;
 
+import com.krypticalKnight.processingMe.entities.EntityManager;
 import com.krypticalKnight.processingMe.render.RenderManager;
 import com.krypticalKnight.processingMe.render.ResourceManager;
 import com.krypticalKnight.processingMe.util.Logger;

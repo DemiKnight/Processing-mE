@@ -2,8 +2,8 @@ package com.krypticalKnight.processingMe.render;
 
 
 import com.krypticalKnight.processingMe.MainApp;
+import com.krypticalKnight.processingMe.entities.Entity;
 import org.jetbrains.annotations.Contract;
-import processing.core.PApplet;
 import processing.core.PImage;
 import processing.core.PShape;
 

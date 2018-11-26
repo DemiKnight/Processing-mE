@@ -1,5 +1,7 @@
-package com.krypticalKnight.processingMe.render;
+package com.krypticalKnight.processingMe.entities;
 
+import com.krypticalKnight.processingMe.render.RENDER_STATES;
+import com.krypticalKnight.processingMe.render.RenderManager;
 import processing.core.PApplet;
 
 /**
@@ -10,15 +12,15 @@ import processing.core.PApplet;
  * @since 0.0.2
  * @see RenderManager
  */
-public class Entity {
+public abstract class Entity {
 
     /**
      * Set's an ID for the entity, allow for quick lookup.
      */
-    private static String ID = "Entity";
+    private final String ID;
 
     public String getID() {
-        return Entity.ID;
+        return this.ID;
     }
 
     /**
@@ -39,9 +41,9 @@ public class Entity {
     /**
      * Will be used when the parent Processing instance is set later on.
      */
-    public Entity()
+    public Entity(String newID)
     {
-
+        this.ID = newID;
     }
 
     /**

@@ -1,6 +1,7 @@
 package com.krypticalKnight.processingMe.render;
 
 import com.krypticalKnight.processingMe.MainApp;
+import com.krypticalKnight.processingMe.entities.Entity;
 import processing.core.PApplet;
 
 import java.util.LinkedList;
