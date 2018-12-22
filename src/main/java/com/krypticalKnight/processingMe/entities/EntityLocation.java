@@ -19,10 +19,10 @@ public class EntityLocation {
     {
         return new EntityLocation(entityIndex,xNewLoc,yNewLoc);
     }
-    public static EntityLocation createLocation(String entityID, int xNewLoc, int yNewLoc)
-    {
-        return new EntityLocation(EntityManager.getEntityIndex(entityID),xNewLoc,yNewLoc);
-    }
+//    public static EntityLocation createLocation(String entityID, int xNewLoc, int yNewLoc)
+//    {
+//        return new EntityLocation(EntityManager.getEntityIndex(entityID),xNewLoc,yNewLoc);
+//    }
 
     public int getxLocation() {
         return xLocation;

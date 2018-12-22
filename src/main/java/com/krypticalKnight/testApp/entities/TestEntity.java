@@ -1,19 +1,11 @@
 package com.krypticalKnight.testApp.entities;
 
+import com.krypticalKnight.processingMe.Application;
 import com.krypticalKnight.processingMe.entities.Entity;
-import com.krypticalKnight.processingMe.render.ResourceManager;
 import com.krypticalKnight.processingMe.render.ResourceRequirements;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.HashMap;
+import processing.core.PApplet;
 
 public class TestEntity extends Entity implements ResourceRequirements {
-
-    enum textures{
-        up
-    }
-
-    private static HashMap<textures, Integer> textureMap = new HashMap<>();
 
 
     /**
@@ -24,10 +16,13 @@ public class TestEntity extends Entity implements ResourceRequirements {
 
         this.yLocation =20;
         this.xLocation=20;
+
+
     }
 
 
-    public void render()
+
+    public void render(Application graphics)
     {
 //        parent.image(
 //                ResourceManager.getPImageResource(textureMap.get(textures.up)), this.xLocation,this.yLocation, 30,30);
@@ -38,14 +33,9 @@ public class TestEntity extends Entity implements ResourceRequirements {
         this.xLocation+=1;
     }
 
-    public void registerResources(@NotNull ResourceManager manager) {
-        ResourceManager.stagePath("com.krypticalKnight.testApp/UP.png");
-
-//        TestEntity.textureMap.put
-//                (
-//                textures.up,
-//                manager.addResourceI(MainApp.getInstance().loadImage("com.krypticalKnight.testApp/UP.png"))
-//                );
+    @Override
+    public void initResource()
+    {
+        textureMapV.put("UP-Sprite","com.krypticalKnight.testApp/UP.png");
     }
-
 }

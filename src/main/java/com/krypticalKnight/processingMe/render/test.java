@@ -9,7 +9,7 @@ enum direction
 
     private final int value;
 
-    private direction(final int newValue)
+    direction(final int newValue)
     {
         if(newValue >= values().length - 1)
         {

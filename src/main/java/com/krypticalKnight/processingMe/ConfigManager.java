@@ -4,7 +4,7 @@ import com.krypticalKnight.processingMe.util.JsonReader;
 
 public class ConfigManager {
 
-    private static final JsonReader configFile = new JsonReader("../config.json");;
+    private static final JsonReader configFile = new JsonReader("../config.json");
 
     /**
      * Reads the config and stores the default for use throughout the program.
