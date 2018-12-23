@@ -1,10 +1,11 @@
 package com.krypticalKnight.processingMe.render;
 
-import com.krypticalKnight.processingMe.MainApp;
 import com.krypticalKnight.processingMe.entities.Entity;
+import com.krypticalKnight.processingMe.entities.EntityLocation;
+import com.krypticalKnight.processingMe.entities.StageManager;
 import processing.core.PApplet;
 
-import java.util.LinkedList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -35,14 +36,27 @@ public class RenderManager {
         return this.resourceM;
     }
 
+    public void draw(StageManager stageM, PApplet graphics)
+    {
+        Iterator<EntityLocation> it = stageM.getCurrentStage().getIterator();
+
+        while (it.hasNext())
+        {
+            EntityLocation tempLoc = it.next();
+
+            tempLoc.getEntityIndex().render(graphics,tempLoc);
+        }
+    }
+
+
     //    public void init()
 //    {
 //        registerResource();
 //    }
 
 //    /**
-//     * Using <tt>renderList</tt> will iterate through and run the <tt>com.krytpicalknight.processingMe.render()</tt> method on each entity in the list.
-//     * @apiNote Will run <tt>updateEntities()</tt> every frame to update necessary components.
+//     * Using <tt>renderList</tt> will iterate through and setupApplication the <tt>com.krytpicalknight.processingMe.render()</tt> method on each entity in the list.
+//     * @apiNote Will setupApplication <tt>updateEntities()</tt> every frame to update necessary components.
 //     */
 //    public void renderFrame()
 //    {

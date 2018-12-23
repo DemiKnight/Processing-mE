@@ -1,7 +1,7 @@
 package com.krypticalKnight.testApp.entities;
 
-import com.krypticalKnight.processingMe.Application;
 import com.krypticalKnight.processingMe.entities.Entity;
+import com.krypticalKnight.processingMe.entities.EntityLocation;
 import com.krypticalKnight.processingMe.render.ResourceRequirements;
 import processing.core.PApplet;
 
@@ -22,15 +22,17 @@ public class TestEntity extends Entity implements ResourceRequirements {
 
 
 
-    public void render(Application graphics)
+    public void render(PApplet graphics, EntityLocation location)
     {
+        graphics.ellipse(location.getxLocation(),location.getyLocation(),10,10);
+
 //        parent.image(
 //                ResourceManager.getPImageResource(textureMap.get(textures.up)), this.xLocation,this.yLocation, 30,30);
     }
 
-    public void update()
+    public void update(EntityLocation loc)
     {
-        this.xLocation+=1;
+        loc.transformXLocation(2);
     }
 
     @Override

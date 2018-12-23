@@ -18,13 +18,18 @@ public class Application extends PApplet {
 
     protected static String defaultStageID = "MainMenu";
 
-    public void run()
+
+    public void setupApplication()
     {
         preInit();
 
         init();
 
         postInit();
+//
+//        String[] thisTing = new String[]{"com.krypticalKnight.processingMe.Application"};
+//
+//        runSketch(thisTing,this);
     }
 
     /**
@@ -53,6 +58,7 @@ public class Application extends PApplet {
      */
     protected void init()
     {
+        debug("Helo");
         mainLogger.LogInformation("Init :: Start");
 
 
@@ -78,5 +84,22 @@ public class Application extends PApplet {
         mainLogger.LogInformation("Pre Init :: End");
     }
 
+    public void draw()
+    {
+        clear();
+        background(170);
+        renderM.draw(stageM, this);
+        entityM.runUpdate(stageM);
+    }
+
+    @Override
+    public void settings() {
+        size(500,500);
+    }
+
+    public static EntityManager getEntityManager()
+    {
+        return entityM;
+    }
 
 }

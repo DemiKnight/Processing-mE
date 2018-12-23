@@ -17,6 +17,7 @@ public class StageManager {
     public void loadStage(int stageIndexLocation)
     {
         currentStage = stageList[stageIndexLocation];
+        currentStage.init();
     }
 
     public void loadStage(String stageID)
@@ -28,12 +29,14 @@ public class StageManager {
             {
                 stageFound=true; //No need to continue searching.
                 currentStage = stageDictionary[index].getResoure();
+                currentStage.init();
             }
         }
         if(!stageFound)
         {
             MainApp.mainLogger.LogError("Unable to load stage! With stageID: " + stageID);
         }
+
     }
 
     private void updateRenderList()
@@ -61,4 +64,7 @@ public class StageManager {
         this.stageList = tempStageCache.toArray(new Stage[0]);
     }
 
+    public Stage getCurrentStage() {
+        return currentStage;
+    }
 }

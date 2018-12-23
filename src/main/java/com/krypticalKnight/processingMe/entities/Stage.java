@@ -1,12 +1,14 @@
 package com.krypticalKnight.processingMe.entities;
 
+
+import java.util.Iterator;
 import java.util.LinkedList;
 
 public abstract class Stage {
 
-    protected String[] entitiesToLoad;
+    protected Entity[] entitiesToLoad;
 
-    protected EntityLocation[] entityLocations;
+    protected LinkedList<EntityLocation> entityLocations = new LinkedList<>();
 
     private final String ID;
 
@@ -16,5 +18,13 @@ public abstract class Stage {
 
     public String getID() {
         return this.ID;
+    }
+
+
+    public void init(){}
+
+    public Iterator<EntityLocation> getIterator()
+    {
+        return entityLocations.iterator();
     }
 }

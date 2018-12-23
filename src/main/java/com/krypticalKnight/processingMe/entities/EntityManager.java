@@ -1,11 +1,9 @@
 package com.krypticalKnight.processingMe.entities;
 
 import com.krypticalKnight.processingMe.EntityRegistry;
-import com.krypticalKnight.processingMe.render.RenderManager;
-import com.krypticalKnight.processingMe.render.ResourceManager;
-import processing.core.PApplet;
+import com.krypticalKnight.processingMe.MainApp;
+import com.krypticalKnight.processingMe.util.UseableResource;
 
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -33,29 +31,7 @@ public class EntityManager {
     /**
      * Used to lookup the Entity ID's to the relvant ones store within the <tt>entityList</tt>.
      */
-    private HashMap<String, Integer> nameLookup;
-
-//    /**
-//     * Reference to the renderManager, to setup rendered entities.
-//     */
-//    private RenderManager renderManager;
-
-    /**
-     * Reference to the ResourceManager, allowing any resources required by a entity to be stored here.
-     */
-//    private ResourceManager resourceM;
-
-    /**
-     * To initialise all variables and references.
-     */
-    public EntityManager()
-    {
-//        this.renderManager = renderM;
-//        this.resourceM = resourceManager;
-//        this.updateList = new LinkedList<Integer>();
-
-//        entityList = new LinkedList<>();
-    }
+    private UseableResource<Entity>[] entityDictionary;
 
     /**
      * Register and store entities to be used later in the application.
@@ -64,13 +40,16 @@ public class EntityManager {
      */
    public void Registry(EntityRegistry intendedRegistry)
    {
-
-
        LinkedList<Entity> temporaryEntityList = new LinkedList<>();
 
-
-
        intendedRegistry.RegisterEntities(temporaryEntityList);
+
+       entityDictionary = new UseableResource[temporaryEntityList.size()];
+
+       for (int index = 0; index < entityDictionary.length; index++) {
+           entityDictionary[index] = new UseableResource<Entity>(temporaryEntityList.get(index),temporaryEntityList.get(index).getID());
+       }
+
 
        //Cast Linked list to an array.
        this.entityList = temporaryEntityList.toArray(new Entity[0]);
@@ -79,6 +58,30 @@ public class EntityManager {
    public Entity[] getEntities()
    {
        return this.entityList;
+   }
+
+   public Entity getEntity(String ID)
+   {
+       for (UseableResource<Entity> entityUseableResource : entityDictionary)
+       {
+           if (entityUseableResource.getID().equals(ID)) return entityUseableResource.getResoure();
+       }
+
+       MainApp.mainLogger.LogError("Unable to find Entity with given ID: "+ ID );
+       return null;
+   }
+
+   public void runUpdate(StageManager stageM)
+   {
+       Iterator<EntityLocation> it =  stageM.getCurrentStage().getIterator();
+
+       while (it.hasNext())
+       {
+           EntityLocation loc = it.next();
+
+           loc.getEntityIndex().update(loc);
+
+       }
    }
 
 //

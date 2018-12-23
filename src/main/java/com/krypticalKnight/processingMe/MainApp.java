@@ -1,10 +1,6 @@
 package com.krypticalKnight.processingMe;
 
-import com.krypticalKnight.processingMe.entities.EntityManager;
-import com.krypticalKnight.processingMe.render.RenderManager;
-import com.krypticalKnight.processingMe.render.ResourceManager;
 import com.krypticalKnight.processingMe.util.Logger;
-import org.jetbrains.annotations.Contract;
 import processing.core.PApplet;
 
 public class MainApp
@@ -26,9 +22,9 @@ public class MainApp
     {
         mainLogger.LogInformation("Processing-Me Started! Made By Alex Knight");
 
-        app.run();
+        app.setupApplication();
 
-        PApplet.main("com.krypticalKnight.processingMe.MainApp");
+        PApplet.main("com.krypticalKnight.processingMe.Application");
     }
 
 }

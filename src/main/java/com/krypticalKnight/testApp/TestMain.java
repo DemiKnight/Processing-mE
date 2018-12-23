@@ -13,7 +13,7 @@ public class TestMain {
     public static void main(String[] args){
         System.out.println("Hello");
 
-        app.run();
+        app.setupApplication();
 
         testAppLogger.LogInformation("TestApp Started");
         PApplet.main("com.krypticalKnight.testApp.TestApp");

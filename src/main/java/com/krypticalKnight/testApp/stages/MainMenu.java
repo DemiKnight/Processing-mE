@@ -1,17 +1,23 @@
 package com.krypticalKnight.testApp.stages;
 
+import com.krypticalKnight.processingMe.Application;
+import com.krypticalKnight.processingMe.entities.Entity;
 import com.krypticalKnight.processingMe.entities.EntityLocation;
 import com.krypticalKnight.processingMe.entities.Stage;
 
-public class mainMenu extends Stage {
+public class MainMenu extends Stage {
 
-    public mainMenu()
+    public MainMenu()
     {
-        super("mainMenu");
-        this.entitiesToLoad = new String[] {"testEntity"};
-        this.entityLocations = new EntityLocation[] {
-                EntityLocation.createLocation("testEntity", 20,20)
-        };
+        super("MainMenu");
+    }
+
+    public void init()
+    {
+        this.entitiesToLoad = new Entity[] {Application.getEntityManager().getEntity("testEntity")};
+
+        this.entityLocations.add(EntityLocation.createLocation(Application.getEntityManager().getEntity("testEntity"),20,20));
+
     }
 
 }

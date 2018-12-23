@@ -1,6 +1,5 @@
 package com.krypticalKnight.processingMe.entities;
 
-import com.krypticalKnight.processingMe.Application;
 import com.krypticalKnight.processingMe.render.RENDER_STATES;
 import com.krypticalKnight.processingMe.render.RenderManager;
 import processing.core.PApplet;
@@ -42,17 +41,6 @@ public abstract class Entity {
     }
 
     /**
-     * Will allow entity to draw to the main processing window.
-     *
-     * Not needed if the entity does not interact with Processing
-     * @param p Sets the pointer to the main Processing instance, used to interact with the draw window.
-     */
-//    public void setParentProcessing(PApplet p)
-//    {
-//        this.parent = p;
-//    }
-
-    /**
      * The x Location of the entity
      */
     public float xLocation = 0;
@@ -68,7 +56,7 @@ public abstract class Entity {
      * This function is called after <tt>update()</tt> has finished updating the object instance.
      * @implNote Must be a <i>pure-function</i>, meaning it must not change the instance of the class
      */
-    public void render(Application graphics){}
+    public void render(PApplet graphics, EntityLocation location){}
 
     /**
      * Controls whether the entity should be updated on this pass, and whether it should be <i>halted</i>.
@@ -86,9 +74,14 @@ public abstract class Entity {
      * Will change the variables within the class instance.
      * @implNote Will changed the variables of the instance, must be a <i>impure-function</i>
      */
-    public void update()
+    public void update(EntityLocation location)
     {
         if(!canUpdate()) return;
     }
+
+    /**
+     * Call before first render.
+     */
+    public void init(){}
 
 }

@@ -2,34 +2,35 @@ package com.krypticalKnight.processingMe.entities;
 
 public class EntityLocation {
 
-    private int xLocation = 0;
+    private int xLocation;
 
-    private int yLocation = 0;
+    private int yLocation;
 
-    private int entityIndex;
+    private final Entity entity;
 
-    public EntityLocation(int entityToRefnerece1, int defaultXLocation, int defaultYLocation)
+    public EntityLocation(Entity entityToRefnerece1, int defaultXLocation, int defaultYLocation)
     {
-        this.entityIndex = entityToRefnerece1;
+        this.entity = entityToRefnerece1;
         this.xLocation = defaultXLocation;
         this.yLocation = defaultYLocation;
     }
 
-    public static EntityLocation createLocation(int entityIndex, int xNewLoc, int yNewLoc)
+    public static EntityLocation createLocation(Entity entityToTrack, int xNewLoc, int yNewLoc)
     {
-        return new EntityLocation(entityIndex,xNewLoc,yNewLoc);
+        return new EntityLocation(entityToTrack,xNewLoc,yNewLoc);
     }
-//    public static EntityLocation createLocation(String entityID, int xNewLoc, int yNewLoc)
-//    {
-//        return new EntityLocation(EntityManager.getEntityIndex(entityID),xNewLoc,yNewLoc);
-//    }
 
     public int getxLocation() {
-        return xLocation;
+        return this.xLocation;
     }
 
     public void setxLocation(int xLocation) {
         this.xLocation = xLocation;
+    }
+
+    public void transformXLocation(int transformX)
+    {
+        this.xLocation += transformX;
     }
 
     public int getyLocation() {
@@ -40,7 +41,12 @@ public class EntityLocation {
         this.yLocation = yLocation;
     }
 
-    public int getEntityIndex() {
-        return entityIndex;
+    public void transformYLocation(int transformY)
+    {
+        this.yLocation += transformY;
+    }
+
+    public Entity getEntityIndex() {
+        return entity;
     }
 }

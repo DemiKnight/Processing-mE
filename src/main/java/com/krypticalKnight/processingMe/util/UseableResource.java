@@ -5,6 +5,8 @@ import com.krypticalKnight.processingMe.entities.Stage;
 import processing.core.PImage;
 import processing.core.PShape;
 
+import java.util.LinkedList;
+
 /**
  * TODO Remove this class and just extend all classes
  * @param <Type>
@@ -63,5 +65,13 @@ public class UseableResource <Type>
     {
         return ID;
     }
+
+//    public static <T> void SetupDictionary(LinkedList<T> listToAddFrom, UseableResource<T>[] arrayToPopulate)
+//    {
+//        for (int index = 0; index < arrayToPopulate.length; index++) {
+//            arrayToPopulate[index] = new UseableResource<T>(listToAddFrom.get(index), listToAddFrom.get(index).getID());
+//        }
+//
+//    }
 
 }
