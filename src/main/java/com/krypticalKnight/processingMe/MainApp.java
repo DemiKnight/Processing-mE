@@ -5,7 +5,7 @@ import processing.core.PApplet;
 
 public class MainApp
 {
-    private static String version = "0.0.5";
+    private static String version = "0.1.0";
 
 //    private static ResourceManager resourceM = new ResourceManager();
 //    protected static EntityManager entityM /*= new EntityManager(renderM,resourceM)*/;
