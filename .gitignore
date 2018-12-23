@@ -16,3 +16,7 @@ gradle-app.setting
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
 
+lib/
+
+#/src/main/java/com/krypticalKnight/testApp/
+#/src/main/resources/com.krypticalKnight.testApp/
