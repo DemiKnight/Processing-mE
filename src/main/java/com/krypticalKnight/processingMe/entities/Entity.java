@@ -1,5 +1,7 @@
-package com.krypticalKnight.processingMe.render;
+package com.krypticalKnight.processingMe.entities;
 
+import com.krypticalKnight.processingMe.render.RENDER_STATES;
+import com.krypticalKnight.processingMe.render.RenderManager;
 import processing.core.PApplet;
 
 /**
@@ -10,15 +12,15 @@ import processing.core.PApplet;
  * @since 0.0.2
  * @see RenderManager
  */
-public class Entity {
+public abstract class Entity {
 
     /**
      * Set's an ID for the entity, allow for quick lookup.
      */
-    private static String ID = "Entity";
+    private final String ID;
 
     public String getID() {
-        return Entity.ID;
+        return this.ID;
     }
 
     /**
@@ -31,28 +33,11 @@ public class Entity {
     public RENDER_STATES renderState = RENDER_STATES.rendering;
 
     /**
-     * This will allow for the class to edit the same processing instance.
-     * @see PApplet
-     */
-    protected PApplet parent;
-
-    /**
      * Will be used when the parent Processing instance is set later on.
      */
-    public Entity()
+    public Entity(String newID)
     {
-
-    }
-
-    /**
-     * Will allow entity to draw to the main processing window.
-     *
-     * Not needed if the entity does not interact with Processing
-     * @param p Sets the pointer to the main Processing instance, used to interact with the draw window.
-     */
-    public void setParentProcessing(PApplet p)
-    {
-        this.parent = p;
+        this.ID = newID;
     }
 
     /**
@@ -71,7 +56,7 @@ public class Entity {
      * This function is called after <tt>update()</tt> has finished updating the object instance.
      * @implNote Must be a <i>pure-function</i>, meaning it must not change the instance of the class
      */
-    public void render(){}
+    public void render(PApplet graphics, EntityLocation location){}
 
     /**
      * Controls whether the entity should be updated on this pass, and whether it should be <i>halted</i>.
@@ -89,9 +74,14 @@ public class Entity {
      * Will change the variables within the class instance.
      * @implNote Will changed the variables of the instance, must be a <i>impure-function</i>
      */
-    public void update()
+    public void update(EntityLocation location)
     {
         if(!canUpdate()) return;
     }
+
+    /**
+     * Call before first render.
+     */
+    public void init(){}
 
 }
