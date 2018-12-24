@@ -7,12 +7,6 @@ public class MainApp
 {
     private static String version = "0.1.0";
 
-//    private static ResourceManager resourceM = new ResourceManager();
-//    protected static EntityManager entityM /*= new EntityManager(renderM,resourceM)*/;
-//    private static RenderManager renderM;
-
-//    private static PApplet instance;
-
     public static Logger mainLogger = new Logger("Processing-Me");
 
     private static Application app = new Application();
@@ -26,5 +20,4 @@ public class MainApp
 
         PApplet.main("com.krypticalKnight.processingMe.Application");
     }
-
 }

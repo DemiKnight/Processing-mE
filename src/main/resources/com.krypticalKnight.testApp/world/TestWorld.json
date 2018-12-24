@@ -1,0 +1,15 @@
+{
+  "worldData":
+  {
+    "name": "Test World",
+    "width": 120,
+    "height": 120
+  },
+  "level":
+  {
+    "0":
+    {
+
+    }
+  }
+}

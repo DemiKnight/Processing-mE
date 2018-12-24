@@ -13,11 +13,6 @@ public class TestEntity extends Entity implements ResourceRequirements {
      */
     public TestEntity() {
         super("testEntity");
-
-        this.yLocation =20;
-        this.xLocation=20;
-
-
     }
 
 
@@ -25,9 +20,6 @@ public class TestEntity extends Entity implements ResourceRequirements {
     public void render(PApplet graphics, EntityLocation location)
     {
         graphics.ellipse(location.getxLocation(),location.getyLocation(),10,10);
-
-//        parent.image(
-//                ResourceManager.getPImageResource(textureMap.get(textures.up)), this.xLocation,this.yLocation, 30,30);
     }
 
     public void update(EntityLocation loc)

@@ -26,10 +26,6 @@ public class Application extends PApplet {
         init();
 
         postInit();
-//
-//        String[] thisTing = new String[]{"com.krypticalKnight.processingMe.Application"};
-//
-//        runSketch(thisTing,this);
     }
 
     /**
