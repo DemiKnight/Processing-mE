@@ -10,10 +10,14 @@ public abstract class Stage {
 
     protected LinkedList<EntityLocation> entityLocations = new LinkedList<>();
 
-    private final String ID;
+    private String ID;
 
     protected Stage(String id) {
         ID = id;
+    }
+    protected Stage()
+    {
+
     }
 
     public String getID() {

@@ -18,7 +18,7 @@ public class Logger {
 
     public void LogInformation(String strToLog)
     {
-        System.out.println(String.format("[%s I] %s",LogTag,strToLog));
+        System.out.println(String.format("[%s Info] %s",LogTag,strToLog));
     }
 
 

@@ -1,9 +1,8 @@
 plugins {
     id 'java'
-//    id 'groovy'
 }
 
-group 'com.krytpicalknight.processingGame'
+group 'com.krytpicalknight.processingMe'
 /**
  * 1. Major Release
  * 2. Minor Release
@@ -25,7 +24,6 @@ configurations {
 sourceSets {
     main {
         compileClasspath += configurations.provided
-
     }
 }
 //processResources{

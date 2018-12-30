@@ -22,6 +22,8 @@ public class EntityManager {
      */
     private Entity[] entityList;
 
+    private LinkedList<Entity> temporaryEntityList = new LinkedList<>();
+
     /**
      * Will hold the <i>index location</i> of the entities to update before each com.krytpicalknight.processingMe.render pass. Will use <tt>updateEntities()</tt>
      * iterate and update all entities.
@@ -40,24 +42,48 @@ public class EntityManager {
      */
    public void Registry(EntityRegistry intendedRegistry)
    {
-       LinkedList<Entity> temporaryEntityList = new LinkedList<>();
+//       LinkedList<Entity> temporaryEntityList = new LinkedList<>();
 
        intendedRegistry.RegisterEntities(temporaryEntityList);
+
+   }
+   public void RegisterEntity(Entity newEntity)
+   {
+       if(temporaryEntityList != null)
+       {
+           temporaryEntityList.add(newEntity);
+       }
+       else
+       {
+           MainApp.mainLogger.LogError("Attempting to register entity post preInit! " + newEntity.getID());
+       }
+   }
+
+    /**
+     * Put all entities held in temp list into a single array.
+     */
+   public void FinaliseRegistry()
+   {
+       this.entityList = temporaryEntityList.toArray(new Entity[0]);
 
        entityDictionary = new UseableResource[temporaryEntityList.size()];
 
        for (int index = 0; index < entityDictionary.length; index++) {
-           entityDictionary[index] = new UseableResource<Entity>(temporaryEntityList.get(index),temporaryEntityList.get(index).getID());
+           entityDictionary[index] = new UseableResource<Entity>(entityList[index], entityList[index].getID());
        }
 
-
-       //Cast Linked list to an array.
-       this.entityList = temporaryEntityList.toArray(new Entity[0]);
+       //No Longer needed
+       this.temporaryEntityList = null;
    }
 
    public Entity[] getEntities()
    {
-       return this.entityList;
+       if (temporaryEntityList == null)
+       {
+           return this.entityList;
+       } else {
+           return temporaryEntityList.toArray(new Entity[0]);
+       }
    }
 
    public Entity getEntity(String ID)

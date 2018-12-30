@@ -3,18 +3,18 @@ package com.krypticalKnight.processingMe;
 import com.krypticalKnight.processingMe.entities.EntityManager;
 import com.krypticalKnight.processingMe.entities.StageManager;
 import com.krypticalKnight.processingMe.render.RenderManager;
+import com.krypticalKnight.processingMe.world.WorldManager;
 import processing.core.PApplet;
 
 import static com.krypticalKnight.processingMe.MainApp.mainLogger;
 
 public class Application extends PApplet {
 
-//    private static ResourceManager resourceM = new ResourceManager();
-
-
     protected static EntityManager entityM = new EntityManager();
     protected static RenderManager renderM = new RenderManager();
     protected static StageManager stageM = new StageManager();
+
+    protected static WorldManager worldM = new WorldManager();
 
     protected static String defaultStageID = "MainMenu";
 
@@ -45,6 +45,8 @@ public class Application extends PApplet {
         //Required for the PApplet.loadImage() method.
         this.sketchPath();
 
+        worldM.init();
+
         mainLogger.LogInformation("Pre Init :: End");
     }
 
@@ -54,9 +56,9 @@ public class Application extends PApplet {
      */
     protected void init()
     {
-        debug("Helo");
         mainLogger.LogInformation("Init :: Start");
 
+        entityM.FinaliseRegistry();
 
         renderM.getResourceM().loadResources(this);
 
@@ -97,5 +99,6 @@ public class Application extends PApplet {
     {
         return entityM;
     }
+    public static RenderManager getRenderManager() { return renderM; }
 
 }

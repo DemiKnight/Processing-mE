@@ -1,6 +1,7 @@
 {
   "worldData":
   {
+    "format-version": 1,
     "name": "Test World",
     "width": 120,
     "height": 120
@@ -9,7 +10,41 @@
   {
     "0":
     {
-
+      "meta":
+      {
+        "id": "Level 1"
+      },
+      "background":
+      {
+        "type": 0,
+        "colour": "2a2a2a"
+      },
+      "structure":
+      {
+        "create-wall":
+        [
+          [50, 50, 60, 40, 40, "222211", null],
+          [100, 110, 40, 40, 4, "222211", null]
+        ]
+      }
+    },
+    "1":
+    {
+      "meta":
+      {
+        "id": "Level 2",
+        "width": 150,
+        "height": 150
+      },
+      "background":
+      {
+        "type": 1,
+        "image": ""
+      },
+      "structure":
+      {
+        "create-wall": [20, 20, 40, 40, 4, "222211", null]
+      }
     }
   }
 }

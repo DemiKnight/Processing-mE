@@ -1,5 +1,6 @@
 package com.krypticalKnight.processingMe.entities;
 
+import com.krypticalKnight.processingMe.Application;
 import com.krypticalKnight.processingMe.render.RENDER_STATES;
 import com.krypticalKnight.processingMe.render.RenderManager;
 import processing.core.PApplet;
@@ -56,7 +57,7 @@ public abstract class Entity {
      * This function is called after <tt>update()</tt> has finished updating the object instance.
      * @implNote Must be a <i>pure-function</i>, meaning it must not change the instance of the class
      */
-    public void render(PApplet graphics, EntityLocation location){}
+    public void render(Application graphics, EntityLocation location){}
 
     /**
      * Controls whether the entity should be updated on this pass, and whether it should be <i>halted</i>.
