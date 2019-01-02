@@ -24,6 +24,12 @@ public class WorldHandler {
          */
         WorldMetaDataName("name"),
 
+        /**
+         * Indicate whether all entities should be loaded in the entire world or per level.
+         * TODO Implement this when required behaviour from the entityManager is complete.
+         */
+        WorldMetaDataHeavyLoading("heavy-loading"),
+
         WorldMetaDataWidth("width"),
         WorldMetaDataHeight("height"),
         LevelTree("level"),
@@ -126,6 +132,11 @@ public class WorldHandler {
 
 
         }
+        return null;
+    }
+
+    public String getStrData()
+    {
         return null;
     }
 
