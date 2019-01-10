@@ -121,9 +121,9 @@ public class WorldManager {
 
                 JSONObject JSONData = JSONObject.parse(rawWorldJson);
 
-                System.out.println(rawWorldJson);
+//                System.out.println(rawWorldJson);
 
-                System.out.println(JSONData.getJSONObject("worldData").getString("name"));
+//                System.out.println(JSONData.getJSONObject("worldData").getString("name"));
                 World newWorld = World.createWorld(JSONData);
 
             }

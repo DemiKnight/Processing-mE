@@ -33,10 +33,9 @@ public class Level extends Stage {
 
 
 
-
-
-
         JSONObject structure = rawLevel.getJSONObject("structure");
+
+//        System.out.println(structure.toString());
 
         Iterator structureIt = structure.keyIterator();
         while (structureIt.hasNext())
@@ -48,7 +47,7 @@ public class Level extends Stage {
             {
                 case "create-wall":
 
-                    for (int index = 0; index < structure.getJSONArray(WorldHandler.WorldCommands.CommandBuildWall.getCommandRaw()).size(); index++)
+                    for (int index = 0; index < structure.getJSONArray(WorldHandler.WorldCommands.CommandBuildWall.getCommandRaw()).size() - 1; index++)
                     {
                         System.out.println(structure.toString());
 

@@ -31,7 +31,7 @@ public class World {
 
    public static World createWorld(JSONObject rawWorldData)
    {
-       System.out.println(WorldHandler.WorldCommands.FormatVersion.getCommandRaw());
+//       System.out.println(WorldHandler.WorldCommands.FormatVersion.getCommandRaw());
 
        JSONObject rawLevelData = rawWorldData.getJSONObject("level");
        JSONObject rawMetaData = rawWorldData.getJSONObject("worldData");

@@ -7,8 +7,7 @@ import static com.krypticalKnight.testApp.TestApp.testAppLogger;
 public class TestMain {
 
     private static TestApp app = new TestApp();
-
-
+    
 
     public static void main(String[] args)
     {
