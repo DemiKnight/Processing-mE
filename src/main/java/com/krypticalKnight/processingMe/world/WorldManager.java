@@ -119,13 +119,12 @@ public class WorldManager {
                 //Convert data into a string.
                 rawWorldJson = new String(rawWorldData, Charset.defaultCharset());
 
+                //Convert world json file to JsonObject
                 JSONObject JSONData = JSONObject.parse(rawWorldJson);
 
-//                System.out.println(rawWorldJson);
 
 //                System.out.println(JSONData.getJSONObject("worldData").getString("name"));
                 World newWorld = World.createWorld(JSONData);
-
             }
 
         }

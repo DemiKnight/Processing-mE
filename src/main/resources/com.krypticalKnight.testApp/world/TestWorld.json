@@ -13,7 +13,7 @@
     {
       "meta":
       {
-        "id": "Level 1"
+        "id": "Earth"
       },
       "background":
       {
@@ -33,7 +33,7 @@
     {
       "meta":
       {
-        "id": "Level 2",
+        "id": "Space",
         "width": 150,
         "height": 150
       },
@@ -44,7 +44,10 @@
       },
       "structure":
       {
-        "create-wall": [20, 20, 40, 40, 4, "222211", null]
+        "create-wall":
+        [
+          [20, 20, 40, 40, 4, "222211", null]
+        ]
       }
     }
   }

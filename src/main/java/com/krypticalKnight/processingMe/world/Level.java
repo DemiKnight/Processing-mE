@@ -22,40 +22,56 @@ public class Level extends Stage {
         super(id);
     }
 
+    /**
+     * Convert each level into a Level object.
+     *
+     * Takes a JSON object containing a Meta, background and structure children.
+     *
+     * @param rawLevel JSON object containg all Level information
+     * @param levelIndex
+     * @return Populated Level object.
+     */
     public Level createLevel(JSONObject rawLevel, int levelIndex)
     {
+        //Sets the ID for the level to the level index + the ID.
         String levelTag = levelIndex + ":" + rawLevel.getJSONObject("meta").getString("id");
+
+        //Blank level to populate below.
         Level newLevel = new Level(levelTag);
+
+        //Contains all Entities that need to be loaded for the Level to function properly.
         LinkedList<Entity> tempEntityToLoadList = new LinkedList<>();
 
         /* ################ Meta Data #####################*/
         /* ################ Structure Data #####################*/
 
 
-
+        //The contains all commands to actually build the level and create the entities.
         JSONObject structure = rawLevel.getJSONObject("structure");
 
-//        System.out.println(structure.toString());
+        //Will contain each building command.
 
         Iterator structureIt = structure.keyIterator();
         while (structureIt.hasNext())
         {
             String instructionKey = (String) structureIt.next();
 
-
+            //Handle the command by passing it to the relevant function.
             switch (instructionKey)
             {
                 case "create-wall":
 
-                    for (int index = 0; index < structure.getJSONArray(WorldHandler.WorldCommands.CommandBuildWall.getCommandRaw()).size() - 1; index++)
+//                    System.out.println(structure.getJSONArray("create-wall"));
+
+                    //Iterates through each individual array for each wall.
+//                    System.out.println(structure.getJSONArray(WorldHandler.WorldCommands.CommandBuildWall.getCommandRaw()).toString());
+
+
+                    for (int index = 0; index < structure.getJSONArray(WorldHandler.WorldCommands.CommandBuildWall.getCommandRaw()).size(); index++)
                     {
-                        System.out.println(structure.toString());
 
-                        JSONArray WallParamaters = structure.getJSONArray(WorldHandler.WorldCommands.CommandBuildWall.getCommandRaw()).getJSONArray(index);
-
-                        Application.getEntityManager().RegisterEntity(
-                                Wall.createWall(WallParamaters,levelTag + ":" + index));
-
+                        handleCreateWall(structure.getJSONArray("create-wall").getJSONArray(index));
+//                        System.out.println(index);
 
                     }
 
@@ -78,11 +94,13 @@ public class Level extends Stage {
      */
     private void handleCreateWall(JSONArray listOfWalls)
     {
+        System.out.println(listOfWalls.toString());
+        System.out.println("#########################");
 
-        for(int wallIndex = 0; wallIndex < listOfWalls.size(); wallIndex++)
-        {
-
-        }
+//        for(int wallIndex = 0; wallIndex < listOfWalls.size(); wallIndex++)
+//        {
+//
+//        }
     }
 
 }

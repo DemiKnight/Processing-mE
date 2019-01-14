@@ -29,43 +29,62 @@ public class World {
         return this.WIDTH_WORLD;
     }
 
-   public static World createWorld(JSONObject rawWorldData)
-   {
-//       System.out.println(WorldHandler.WorldCommands.FormatVersion.getCommandRaw());
-
-       JSONObject rawLevelData = rawWorldData.getJSONObject("level");
-       JSONObject rawMetaData = rawWorldData.getJSONObject("worldData");
-       World newWorld = null;
-
-       try
-       {
-           LinkedList<Level> tempLevelStore = new LinkedList<>();
-
-           newWorld = new World();
-           newWorld.ID = rawMetaData.getString("name"); //Name is required.
-           newWorld.WIDTH_WORLD = rawMetaData.getInt("width", 200);
-           newWorld.HEIGHT_WORLD = rawMetaData.getInt("height", 200);
-
-           Iterator levelIterator = rawLevelData.keyIterator();
-
-           while (levelIterator.hasNext())
-           {
-              String levelIndex = (String) levelIterator.next();
+    /**
+     * Convert a World.json to a World object.
+     *
+     * @param rawWorldData The full Data from a world.json
+     * @return New World object.
+     */
+    public static World createWorld(JSONObject rawWorldData)
+    {
 
 
-              tempLevelStore.add( new Level().createLevel(rawLevelData.getJSONObject(levelIndex), Integer.parseInt(levelIndex)));
+    //       System.out.println(WorldHandler.WorldCommands.FormatVersion.getCommandRaw());
+        //Contains all the JSON data for building each level.
+        JSONObject rawLevelData = rawWorldData.getJSONObject("level");
 
-//              System.out.println(.toString());
+        //Contains all meta information for the entire world.
+        JSONObject rawMetaData = rawWorldData.getJSONObject("worldData");
 
-           }
 
-       }
-       catch (NullPointerException e)
-       {
+        World newWorld = null;
+
+        try
+        {
+            //Temp store for all levels.
+            LinkedList<Level> tempLevelStore = new LinkedList<>();
+
+            newWorld = new World();
+
+            // World meta data.
+            newWorld.ID = rawMetaData.getString("name"); //Name is required.
+            newWorld.WIDTH_WORLD = rawMetaData.getInt("width", 200);
+            newWorld.HEIGHT_WORLD = rawMetaData.getInt("height", 200);
+
+            Iterator levelIterator = rawLevelData.keyIterator();
+
+            //Iterate all "level" children.
+            while (levelIterator.hasNext())
+            {
+                String levelIndex = (String) levelIterator.next();
+
+//                System.out.println(levelIndex);
+
+                tempLevelStore.add( new Level().createLevel(rawLevelData.getJSONObject(levelIndex), Integer.parseInt(levelIndex)));
+
+            //              System.out.println(.toString());
+
+            }
+
+            newWorld.levels = tempLevelStore.toArray(new Level[0]);
+
+        }
+        catch (NullPointerException e)
+        {
            e.printStackTrace();
-       }
+        }
 
-       return newWorld;
-   }
+        return newWorld;
+    }
 
 }
