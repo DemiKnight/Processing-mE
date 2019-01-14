@@ -31,12 +31,13 @@ public class Wall extends Entity {
         Wall tempWall = new Wall(entityID);
 
         //Required Variables
-        tempWall.wallStart = new EntityLocation(tempWall,objectData.getInt(0),objectData.getInt(1));
-        tempWall.wallEnd = new EntityLocation(tempWall,objectData.getInt(2),objectData.getInt(3));
+        tempWall.wallStart = new EntityLocation(tempWall ,objectData.getInt(0),objectData.getInt(1));
+        tempWall.wallEnd = new EntityLocation(tempWall ,objectData.getInt(2),objectData.getInt(3));
 
         tempWall.wallThickness = (byte) objectData.getInt(4,2);
         tempWall.colour = (objectData.get(5) != null ? Color.decode(objectData.getString(5)) : Color.BLACK);
 
+        System.out.println(entityID);
 
         return tempWall;
     }

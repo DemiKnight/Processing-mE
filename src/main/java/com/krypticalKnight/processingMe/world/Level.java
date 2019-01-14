@@ -10,8 +10,11 @@ import processing.data.JSONObject;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-
-public class Level extends Stage {
+/**
+ *
+ */
+public class Level extends Stage
+{
 
     public Level()
     {
@@ -61,19 +64,7 @@ public class Level extends Stage {
             {
                 case "create-wall":
 
-//                    System.out.println(structure.getJSONArray("create-wall"));
-
-                    //Iterates through each individual array for each wall.
-//                    System.out.println(structure.getJSONArray(WorldHandler.WorldCommands.CommandBuildWall.getCommandRaw()).toString());
-
-
-                    for (int index = 0; index < structure.getJSONArray(WorldHandler.WorldCommands.CommandBuildWall.getCommandRaw()).size(); index++)
-                    {
-
-                        handleCreateWall(structure.getJSONArray("create-wall").getJSONArray(index));
-//                        System.out.println(index);
-
-                    }
+                    handleCreateWall(tempEntityToLoadList,structure.getJSONArray(WorldHandler.WorldCommands.CommandBuildWall.getCommandRaw()),levelTag+":wall:");
 
                     break;
             }
@@ -90,17 +81,20 @@ public class Level extends Stage {
 
     /**
      *
-     * @param listOfWalls List of walls to add.
+     * @param listOfWalls Array containing information to create a single wall.
      */
-    private void handleCreateWall(JSONArray listOfWalls)
+    private void handleCreateWall(LinkedList<Entity> listToModify, JSONArray listOfWalls, String baseTag)
     {
-        System.out.println(listOfWalls.toString());
-        System.out.println("#########################");
 
-//        for(int wallIndex = 0; wallIndex < listOfWalls.size(); wallIndex++)
-//        {
-//
-//        }
+        for (int levelArrayIndex = 0; levelArrayIndex < listOfWalls.size(); levelArrayIndex++)
+        {
+
+            listToModify.add(Wall.createWall(listOfWalls.getJSONArray(levelArrayIndex),baseTag+":"+levelArrayIndex));
+        }
+
+//        System.out.println(listOfWalls.toString());
+//        System.out.println("#########################");
+
     }
 
 }
