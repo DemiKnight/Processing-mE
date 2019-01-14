@@ -75,7 +75,7 @@ public class Level extends Stage
         /* ################ Background Data #####################*/
 
 
-        entitiesToLoad = tempEntityToLoadList.toArray(new Entity[0]);
+        newLevel.entitiesToLoad = tempEntityToLoadList.toArray(new Entity[0]);
         return newLevel;
     }
 

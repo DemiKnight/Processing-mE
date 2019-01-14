@@ -93,6 +93,8 @@ public class WorldManager {
         String rawWorldJson;
         byte[] rawWorldData;
 
+        LinkedList<World> tempWorldList = new LinkedList<>();
+
         for (Path worldPath: rawWorldPaths)
         {
             //Clear variable from previous attempts.
@@ -124,10 +126,12 @@ public class WorldManager {
 
 
 //                System.out.println(JSONData.getJSONObject("worldData").getString("name"));
-                World newWorld = World.createWorld(JSONData);
+//                World newWorld = World.createWorld(JSONData);
+                tempWorldList.add(World.createWorld(JSONData));
             }
 
         }
+        this.worldList = tempWorldList.toArray(new World[0]);
     }
 
 }
