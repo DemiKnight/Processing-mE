@@ -1,5 +1,6 @@
 package com.krypticalKnight.processingMe.world.worldobjects;
 
+import com.krypticalKnight.processingMe.Application;
 import com.krypticalKnight.processingMe.entities.Entity;
 import com.krypticalKnight.processingMe.entities.EntityLocation;
 import processing.core.PImage;
@@ -42,4 +43,10 @@ public class Wall extends Entity {
         return tempWall;
     }
 
+    @Override
+    public void render(Application graphics, EntityLocation location)
+    {
+        graphics.line(wallStart.getxLocation(),wallStart.getyLocation(),wallEnd.getxLocation(),wallEnd.getyLocation());
+
+    }
 }

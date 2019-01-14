@@ -24,6 +24,8 @@ public class WorldManager {
         rawWorldPaths.add(newPath);
     }
 
+    private World currentWorld;
+
     private static boolean isWorld( @NotNull Path filePath)
     {
         try
@@ -36,6 +38,9 @@ public class WorldManager {
         }
     }
 
+    /**
+     * Load worlds from .json files to World object, and being able to render them.
+     */
     public void init()
     {
         //Gather worlds to load.
@@ -133,5 +138,7 @@ public class WorldManager {
         }
         this.worldList = tempWorldList.toArray(new World[0]);
     }
+
+
 
 }

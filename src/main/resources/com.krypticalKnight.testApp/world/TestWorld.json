@@ -5,7 +5,8 @@
     "name": "Test World",
     "width": 120,
     "height": 120,
-    "heavy-loading": true
+    "heavy-loading": true,
+    "default-level": 0
   },
   "level":
   {

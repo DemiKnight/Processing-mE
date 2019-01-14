@@ -1,5 +1,7 @@
 package com.krypticalKnight.processingMe.world;
 
+import com.krypticalKnight.processingMe.Application;
+import com.krypticalKnight.processingMe.entities.StageManager;
 import processing.data.JSONObject;
 
 import java.util.Iterator;
@@ -14,10 +16,7 @@ public class World {
 
     private Level[] levels;
 
-    public void loadWorld(JSONObject rawWorldData)
-    {
 
-    }
 
     public int getHeight()
     {
@@ -37,15 +36,11 @@ public class World {
      */
     public static World createWorld(JSONObject rawWorldData)
     {
-
-
-    //       System.out.println(WorldHandler.WorldCommands.FormatVersion.getCommandRaw());
         //Contains all the JSON data for building each level.
         JSONObject rawLevelData = rawWorldData.getJSONObject("level");
 
         //Contains all meta information for the entire world.
         JSONObject rawMetaData = rawWorldData.getJSONObject("worldData");
-
 
         World newWorld = null;
 
@@ -76,7 +71,10 @@ public class World {
 
             }
 
+
             newWorld.levels = tempLevelStore.toArray(new Level[0]);
+
+            Application.getStageManager(). = newWorld.levels[rawMetaData.getInt("default-level")];
 
         }
         catch (NullPointerException e)
@@ -86,5 +84,6 @@ public class World {
 
         return newWorld;
     }
+
 
 }

@@ -25,6 +25,11 @@ public class WorldHandler {
         WorldMetaDataName("name"),
 
         /**
+         *
+         */
+        WorldMetaDataDefaultLevel("default-level"),
+
+        /**
          * Indicate whether all entities should be loaded in the entire world or per level.
          * TODO Implement this when required behaviour from the entityManager is complete.
          */

@@ -100,5 +100,6 @@ public class Application extends PApplet {
         return entityM;
     }
     public static RenderManager getRenderManager() { return renderM; }
+    public static StageManager getStageManager() { return stageM; }
 
 }
