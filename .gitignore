@@ -20,3 +20,6 @@ lib/
 
 #/src/main/java/com/krypticalKnight/testApp/
 #/src/main/resources/com.krypticalKnight.testApp/
+
+# Javadoc 
+doc/

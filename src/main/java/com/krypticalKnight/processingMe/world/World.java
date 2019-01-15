@@ -1,14 +1,21 @@
 package com.krypticalKnight.processingMe.world;
 
-import com.krypticalKnight.processingMe.Application;
-import com.krypticalKnight.processingMe.entities.StageManager;
 import processing.data.JSONObject;
 
 import java.util.Iterator;
 import java.util.LinkedList;
 
+/**
+ *
+ * @author alexk
+ * @since 0.1.1
+ */
 public class World {
 
+    /**
+     * The world size
+     * @todo Does not currently
+     */
     private int WIDTH_WORLD;
     private int HEIGHT_WORLD;
 
@@ -74,7 +81,7 @@ public class World {
 
             newWorld.levels = tempLevelStore.toArray(new Level[0]);
 
-            Application.getStageManager(). = newWorld.levels[rawMetaData.getInt("default-level")];
+//            Application.getStageManager(). = newWorld.levels[rawMetaData.getInt("default-level")];
 
         }
         catch (NullPointerException e)

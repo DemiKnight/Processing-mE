@@ -8,6 +8,10 @@ import processing.core.PApplet;
 
 import static com.krypticalKnight.processingMe.MainApp.mainLogger;
 
+/**
+ * @brief Main class running the entire application, front and backend,
+ *
+ */
 public class Application extends PApplet {
 
     protected static EntityManager entityM = new EntityManager();
@@ -19,6 +23,13 @@ public class Application extends PApplet {
     protected static String defaultStageID = "MainMenu";
 
 
+    /**
+     * @breif Gather and setup resources necessary for the application to function.
+     *
+     * @detail
+     *
+     * @param
+     */
     public void setupApplication()
     {
         preInit();

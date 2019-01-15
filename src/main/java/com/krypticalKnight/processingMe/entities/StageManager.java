@@ -6,6 +6,9 @@ import com.krypticalKnight.processingMe.util.UseableResource;
 
 import java.util.LinkedList;
 
+/**
+ *
+ */
 public class StageManager {
 
     private Stage[] stageList;
