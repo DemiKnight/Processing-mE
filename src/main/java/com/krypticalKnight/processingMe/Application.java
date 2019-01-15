@@ -3,7 +3,21 @@
  *
  * @section introduction_section Introduction
  *
- * This program was written to allow the {@sa google.co.uk Processing Library}
+ * This program was written to allow the <a href="https://processing.org/" target="_blank">Processing Library</a> to perform
+ * more like a game engine.
+ *
+ * @section howToUse_section How To Use
+ *
+ * The main object is {@link com.krypticalKnight.processingMe.Application Application} which contains all methods for
+ * setting up and rendering the game.
+ *
+ *
+ * @section manchesterMet_section Manchester Metropolitan University Assignment
+ *
+ * <ul>
+ *     <li>Assignment Name: Mouse click game <b>1CWK40</b></li>
+ *     <li>Created By: Alex Knight <b>18016816</b></li>
+ * </ul>
  *
  */
 
@@ -18,26 +32,48 @@ import processing.core.PApplet;
 import static com.krypticalKnight.processingMe.MainApp.mainLogger;
 
 /**
- * @brief Main class running the entire application, front and backend,
+ * @brief Main class running the entire application, front and backend.
  *
+ * This application will gather resources used for
+ *
+ * @class Application
+ *
+ * @author Alex Knight (DemiKnight)
+ * @since 0.1.0
  */
 public class Application extends PApplet {
 
+    /**
+     * Contains all entities being
+     */
     protected static EntityManager entityM = new EntityManager();
+
+    /**
+     *
+     */
     protected static RenderManager renderM = new RenderManager();
+
+    /**
+     *
+     */
     protected static StageManager stageM = new StageManager();
 
     protected static WorldManager worldM = new WorldManager();
 
+    /**
+     * @brief The first stage to be loaded by the Stage Manager.
+     *
+     * Using a stage with the ID "MainMenu", load the stage after
+     *
+     * @see com.krypticalKnight.processingMe.entities.StageManager
+     */
     protected static String defaultStageID = "MainMenu";
 
 
     /**
      * @breif Gather and setup resources necessary for the application to function.
      *
-     * @detail
-     *
-     * @param
+     * @see init()
      */
     public void setupApplication()
     {

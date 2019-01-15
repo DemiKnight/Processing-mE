@@ -7,7 +7,11 @@ import com.krypticalKnight.processingMe.util.UseableResource;
 import java.util.LinkedList;
 
 /**
+ * @breif
  *
+ * @class StageManager
+ *
+ * @author Alex Knight (DemiKnight)
  */
 public class StageManager {
 
