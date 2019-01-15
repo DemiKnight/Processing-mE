@@ -33,6 +33,21 @@ test {
     useJUnitPlatform()
 }
 
+task("doxygenDocumentationClean", type: Exec){
+    commandLine 'cmd', '/c', 'doxygen'
+    commandLine 'rm -r ./doc/*'
+}
+
+task("doxygenDocumentation", type: Exec){
+
+    commandLine 'cmd', '/c', 'doxygen'
+    commandLine 'doxygen'
+
+    doLast {
+        println 'Hello, World!'
+    }
+}
+
 
 dependencies {
     provided group: 'org.processing', name: 'core', version: '3.3.6'

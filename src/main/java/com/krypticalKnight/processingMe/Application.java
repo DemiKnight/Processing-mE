@@ -1,3 +1,12 @@
+/**
+ * @mainpage Processing mE - Game Engine documentation
+ *
+ * @section introduction_section Introduction
+ *
+ * This program was written to allow the {@sa google.co.uk Processing Library}
+ *
+ */
+
 package com.krypticalKnight.processingMe;
 
 import com.krypticalKnight.processingMe.entities.EntityManager;
