@@ -22,6 +22,13 @@ public class EntityManager {
      */
     private Entity[] entityList;
 
+    /**
+     * @brief Temporary store of entities, to be modified during loading. Will be destroyed when complete.
+     *
+     * When application is loading, all required entities should be added to this list. When the application is finished loading,
+     * entities will be moved to the @ref entityList
+     *
+     */
     private LinkedList<Entity> temporaryEntityList = new LinkedList<>();
 
     /**

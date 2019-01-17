@@ -30,7 +30,7 @@ public class Level extends Stage
      *
      * Takes a JSON object containing a Meta, background and structure children.
      *
-     * @param rawLevel JSON object containg all Level information
+     * @param rawLevel JSON object containg all @ref Level information
      * @param levelIndex
      * @return Populated Level object.
      */

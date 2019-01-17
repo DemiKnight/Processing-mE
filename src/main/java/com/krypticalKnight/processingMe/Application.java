@@ -6,6 +6,11 @@
  * This program was written to allow the <a href="https://processing.org/" target="_blank">Processing Library</a> to perform
  * more like a game engine.
  *
+ * @section uml_Section UML
+ *
+ * UML of Processing Me.
+ * @image html Processing-Me-Complete.png
+ *
  * @section howToUse_section How To Use
  *
  * The main object is {@link com.krypticalKnight.processingMe.Application Application} which contains all methods for
@@ -19,6 +24,7 @@
  *     <li>Created By: Alex Knight <b>18016816</b></li>
  * </ul>
  *
+ * @section
  */
 
 package com.krypticalKnight.processingMe;
@@ -54,10 +60,15 @@ public class Application extends PApplet {
     protected static RenderManager renderM = new RenderManager();
 
     /**
+     * @breif  A list of possible {@link com.krypticalKnight.processingMe.entities.Stage Stage}
      *
+     * @see com.krypticalKnight.processingMe.entities.Stage
      */
     protected static StageManager stageM = new StageManager();
 
+    /**
+     * Co
+     */
     protected static WorldManager worldM = new WorldManager();
 
     /**
@@ -73,6 +84,9 @@ public class Application extends PApplet {
     /**
      * @breif Gather and setup resources necessary for the application to function.
      *
+     * The application will execute @ref preInit(), @ref init(), @ref postInit() sequentially. By the end,
+     * the program should be able to be successfully render/function.
+     * @
      * @see init()
      */
     public void setupApplication()
