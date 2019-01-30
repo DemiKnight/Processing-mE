@@ -6,17 +6,22 @@ import com.krypticalKnight.processingMe.render.RenderManager;
 import processing.core.PApplet;
 
 /**
+ * @brief An entity the cat be updated and rendered in Processing.
+ *
+ * @details
+ *
  * This is the superclass for every entity being rendered to the screen. Through this entity, all relevant rendering
  * and game information should be stored and executed.
  *
- * @author Alex Knight
+ * @author Alex Knight (DemiKnight)
  * @since 0.0.2
  * @see RenderManager
  */
 public abstract class Entity {
 
     /**
-     * Set's an ID for the entity, allow for quick lookup.
+     * @brief Set's an ID for the entity, allow for quick lookup.
+     * TODO Remove this.
      */
     private final String ID;
 
@@ -27,8 +32,6 @@ public abstract class Entity {
     /**
      * States whether the entity is being rendered or just existing in memory.
      *
-     *
-     * todo Add the Entity Manager
      * @implNote Need to add Entity Manager to allow for game logic to execute despite it not being rendered.
      */
     public RENDER_STATES renderState = RENDER_STATES.rendering;

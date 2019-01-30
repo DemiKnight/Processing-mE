@@ -23,8 +23,6 @@
  *     <li>Assignment Name: Mouse click game <b>1CWK40</b></li>
  *     <li>Created By: Alex Knight <b>18016816</b></li>
  * </ul>
- *
- * @section
  */
 
 package com.krypticalKnight.processingMe;
@@ -51,6 +49,7 @@ public class Application extends PApplet {
 
     /**
      * Contains all entities being
+     *
      */
     protected static EntityManager entityM = new EntityManager();
 
@@ -60,7 +59,7 @@ public class Application extends PApplet {
     protected static RenderManager renderM = new RenderManager();
 
     /**
-     * @breif  A list of possible {@link com.krypticalKnight.processingMe.entities.Stage Stage}
+     * @brief  A list of possible {@link com.krypticalKnight.processingMe.entities.Stage Stage}
      *
      * @see com.krypticalKnight.processingMe.entities.Stage
      */
@@ -74,6 +73,7 @@ public class Application extends PApplet {
     /**
      * @brief The first stage to be loaded by the Stage Manager.
      *
+     * @details
      * Using a stage with the ID "MainMenu", load the stage after
      *
      * @see com.krypticalKnight.processingMe.entities.StageManager
@@ -82,12 +82,15 @@ public class Application extends PApplet {
 
 
     /**
-     * @breif Gather and setup resources necessary for the application to function.
+     * @brief Gather and setup resources necessary for the application to function.
      *
+     * @details
      * The application will execute @ref preInit(), @ref init(), @ref postInit() sequentially. By the end,
      * the program should be able to be successfully render/function.
-     * @
+     *
+     * @see preInit()
      * @see init()
+     * @See postInit()
      */
     public void setupApplication()
     {
@@ -99,10 +102,17 @@ public class Application extends PApplet {
     }
 
     /**
+     * @brief Load files and setup critical objects.
+     *
+     * @details
+     *
+     *
      * This method will:
      * - Register All Entities, things that can be viewed on screen
      * - Register All Stages, entities that hold what is being viewed.
      * - Gather the resource locations of each resource.
+     *
+     * @link     StageManager
      */
     protected void preInit()
     {
@@ -121,12 +131,16 @@ public class Application extends PApplet {
     }
 
     /**
+     * @brief Initialise and finish loading critical objects.
+     *
+     * @details
      * This method will:
      * - Fetch and load resources.
      */
     protected void init()
     {
         mainLogger.LogInformation("Init :: Start");
+
 
         entityM.FinaliseRegistry();
 
@@ -139,6 +153,9 @@ public class Application extends PApplet {
     }
 
     /**
+     * @brief Setup variables and environment for the program to run in.
+     *
+     * @details
      * This method will:
      * - Load first stage.
      */
