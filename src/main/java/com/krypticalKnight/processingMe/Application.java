@@ -144,6 +144,7 @@ public class Application extends PApplet {
 
         entityM.FinaliseRegistry();
 
+
         renderM.getResourceM().loadResources(this);
 
 //        entityM.giveParentInstance(this);

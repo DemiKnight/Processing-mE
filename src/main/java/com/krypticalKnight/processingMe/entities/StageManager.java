@@ -7,6 +7,8 @@
  * @section creatingStages Getting Started
  * @subsection creatingStages Creating a Registry.
  * Firstly, create
+ * @section defaultStage Default Stage/Main Menu
+ * The {@link com.krypticalKnight.processingMe.entities.Stage Stage} with the ID "MainMenu" needs to exist
  */
 package com.krypticalKnight.processingMe.entities;
 
@@ -31,7 +33,7 @@ import java.util.LinkedList;
  *
  * @see Stage
  */
-@SuppressWarnings("ALL")
+@SuppressWarnings("JavadocReference")
 public class StageManager {
 
     /**

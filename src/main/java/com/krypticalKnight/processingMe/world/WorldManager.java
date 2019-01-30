@@ -13,19 +13,41 @@ import java.nio.file.Paths;
 import java.util.LinkedList;
 import java.util.stream.Stream;
 
-public class WorldManager {
+@SuppressWarnings("JavadocReference")
+public class WorldManager
+{
 
+    /**
+     * @brief Contains all {@link World}s that be used within the
+     * @note Will be set during {@link com.krypticalKnight.processingMe.Application.preInit() preInit()}.
+     */
     private World[] worldList;
 
     private static LinkedList<Path> rawWorldPaths = new LinkedList<>();
 
-    private static void addWorldPath(Path newPath)
+    /**
+     * @brief Add a JSON file to turned into a {@link World}.
+     * @warning After JSON files have initially been processed, in the {@link com.krypticalKnight.processingMe.Application.preInit() preInit()}, will be Null
+     * @param[in] newPath Add a new JSON World file to be used.
+     */
+    private static void addWorldPath(@NotNull Path newPath)
     {
         rawWorldPaths.add(newPath);
     }
 
+    /**
+     * @brief The {@link World} currently loaded.
+     * @note Reference to element within {@link WorldManager.worldList}
+     */
     private World currentWorld;
 
+    /**
+     * @brief Check if a select file is an applicable/syntactically correct Json World File.
+     *
+     * @todo Impletement this during {@link WorldManager.loadWorlds() loadWorlds()}.
+     * @param[in] filePath Json World file to check.
+     * @return Whether the select file is a syntactically correct World.
+     */
     private static boolean isWorld( @NotNull Path filePath)
     {
         try
@@ -39,20 +61,26 @@ public class WorldManager {
     }
 
     /**
-     * Load worlds from .json files to World object, and being able to render them.
+     * @brief Load worlds from .json files to World object, and being able to render them.
+     * @details
+     * Load all JSON world files, convert to {@link World} objects. After this function, Worlds will be accessible to the
+     * rest of the application.
+     * @note Before calling this function, all required JSON Files should be appended to {@link WorldManager.rawWorldPaths rawWorldPaths} using {@link WorldManager.addWorldPath() addWorldPath()}.
      */
     public void init()
     {
         //Gather worlds to load.
         loadWorlds();
 
+        //Convert raw json to World object
         convertWorlds();
 
         rawWorldPaths = null; //No longer needed. Might be removed if a save feature is added.
     }
 
     /**
-     * Obtain raw JSON from any worlds within the resources/world folder,
+     * @brief Obtain raw JSON from any worlds within the resources/world folder,
+     *
      */
     private void loadWorlds()
     {
@@ -138,7 +166,4 @@ public class WorldManager {
         }
         this.worldList = tempWorldList.toArray(new World[0]);
     }
-
-
-
 }

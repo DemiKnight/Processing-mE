@@ -11,6 +11,9 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 /**
+ * @author Alex Knight (DemiKnight)
+ * @since 0.1.1
+ * @see World
  *
  */
 public class Level extends Stage
