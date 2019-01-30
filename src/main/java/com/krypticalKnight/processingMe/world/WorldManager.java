@@ -2,6 +2,7 @@ package com.krypticalKnight.processingMe.world;
 
 import com.krypticalKnight.testApp.TestApp;
 import org.jetbrains.annotations.NotNull;
+import processing.core.PApplet;
 import processing.data.JSONObject;
 
 import java.io.IOException;
@@ -13,6 +14,16 @@ import java.nio.file.Paths;
 import java.util.LinkedList;
 import java.util.stream.Stream;
 
+/**
+ * @brief Create and manage {@link World} objects.
+ * @details
+ * Class will create {@link World} objects from JSON files left within a specific path.
+ * All {@link World} objects will be contained within {@link WorldManager.worldList worldList}, to be refereed to later in the application.
+ *
+ * @author Alex Knight (DemiKnight)
+ * @since 0.1.1
+ * @see World
+ */
 @SuppressWarnings("JavadocReference")
 public class WorldManager
 {
@@ -79,8 +90,10 @@ public class WorldManager
     }
 
     /**
-     * @brief Obtain raw JSON from any worlds within the resources/world folder,
-     *
+     * @brief Obtain raw JSON from any worlds within the resources/world folder.
+     * @details
+     * Checks a "world" folder for files, then attempts to load them into JSONObject.
+     * @todo Make the "world" folder changeable. Instead of permanently pointed towards the testApp/world folder.
      */
     private void loadWorlds()
     {
@@ -119,7 +132,12 @@ public class WorldManager
     }
 
     /**
-     * Load and convert json worlds to {@link World}
+     * @brief Convert JSONObjects containing World information to {@link World} objects.
+     * @details
+     * Converts JSON files found during {@link WorldManager.loadWorlds() loadWorlds()}, into usable {@link World}s.
+     * After the conversions has taken place, {@link WorldManager.worldList worldList} will be filled with available worlds.
+     *
+     * @note To Convert the JSON information, the method {@link World.createWorld() createWorld()} is used.
      */
     private void convertWorlds()
     {
@@ -157,13 +175,62 @@ public class WorldManager
                 //Convert world json file to JsonObject
                 JSONObject JSONData = JSONObject.parse(rawWorldJson);
 
-
-//                System.out.println(JSONData.getJSONObject("worldData").getString("name"));
-//                World newWorld = World.createWorld(JSONData);
+                //Create World object and store for later use.
                 tempWorldList.add(World.createWorld(JSONData));
             }
-
         }
+
         this.worldList = tempWorldList.toArray(new World[0]);
+    }
+
+    /**
+     * @brief Get {@link World} contained within {@link WorldManager.worldList worldList}.
+     *
+     * @param[in] newID Matching ID of the specific World
+     * @warning Will return NUll, if the {@link World}
+     * @return {@link World} with the given ID, otherwise NULL.
+     */
+    public World getWorld(String newID)
+    {
+        for (World selectedWorld: worldList)
+        {
+            if (selectedWorld.getID().equals(newID)) return selectedWorld;
+        }
+
+        //World was unable to be found.
+        return null;
+    }
+
+    /**
+     * @brief Load specific world from {@link WorldManager.worldList worldList}, with a specified {@link com.krypticalKnight.processingMe.world.World.ID ID}.
+     * @details
+     * Search through every {@link World} in the {@link WorldManager.worldList worldList} for a specific {@link com.krypticalKnight.processingMe.world.World.ID ID}.
+     * @if WorldIsFound
+     *      {@link WorldManager.currentWorld currentWorld} is set to the {@link World} with the given ID.
+     *      {@p sucessful} is set to true.
+     *      {@link WorldManager.loadCurrentWorld() loadCurrentWorld()} is called to make the necessary changes to the Application.
+     * @else WorldIsNotFound
+     *      The {@link WorldManager} state remains unchanged.
+     *      {@p successful} is set to false.
+     * @endif
+     *
+     * @param[in] newID The ID of the specific World
+     * @param[out] sucessful
+     */
+    public void loadWorld(String newID, boolean sucessful)
+    {
+        World specificWorld = getWorld(newID);
+        sucessful = specificWorld != null;
+
+        if (sucessful)
+        {
+            this.currentWorld = specificWorld;
+            loadCurrentWorld();
+        }
+    }
+
+    public void loadCurrentWorld()
+    {
+
     }
 }

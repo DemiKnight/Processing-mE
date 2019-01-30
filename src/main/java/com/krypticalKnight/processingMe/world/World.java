@@ -6,10 +6,17 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 /**
+ * @brief Contains information about the virtual game world.
+ * @details
+ * A World is a virtual space which will contain various {@link Level Levels}, which in turn will contain {@link com.krypticalKnight.processingMe.entities.Entity Entities}.
+ * Worlds are created from JSON files, in the method {@link WorldManager.convertWorlds() convertWorlds} during {@link WorldManager.init() init()}.
+ * The world size, {@link World.WIDTH_WORLD WIDTH_WORLD} & {@link World.HEIGHT_WORLD HEIGHT_WORLD} is not represented by pixels. Instead being relative to the viewport.
  *
- * @author alexk
+ * @todo Make World Height relative to the viewport.
+ * @author Alex Knight (DemiKnight)
  * @since 0.1.1
  */
+@SuppressWarnings("JavadocReference")
 public class World {
 
     /**
@@ -19,17 +26,35 @@ public class World {
     private int WIDTH_WORLD;
     private int HEIGHT_WORLD;
 
+    /**
+     * @brief A unique ID representing the {@link World}.
+     */
     private String ID;
 
+    public String getID() {
+        return ID;
+    }
+
+    /**
+     * @brief Contains {@link Level levels} defined in the JSON
+     * @see Level
+     */
     private Level[] levels;
 
 
-
+    /**
+     *
+     * @return The Height of the World
+     */
     public int getHeight()
     {
         return this.HEIGHT_WORLD;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getWidth()
     {
         return this.WIDTH_WORLD;
