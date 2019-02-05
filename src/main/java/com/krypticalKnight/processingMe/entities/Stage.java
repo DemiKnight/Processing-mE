@@ -23,10 +23,14 @@ public abstract class Stage {
      * @brief Entities that are required by the level, devoid of any counter.
      *
      * @details
+     * A copy of entities that this {@link Stage} needs. These will only be used to
      *
      */
     protected Entity[] entitiesToLoad;
 
+    /**
+     * @brief Relative locations  {@link Entity entities}
+     */
     protected LinkedList<EntityLocation> entityLocations = new LinkedList<>();
 
     private String ID;

@@ -11,10 +11,14 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 /**
+ * @brief Contains {@link Entity entities} within the same geometry.
+ * @details
+ * A
+ *
+ * @todo Implement geometry and a viewport to be able to navigate.
  * @author Alex Knight (DemiKnight)
  * @since 0.1.1
  * @see World
- *
  */
 public class Level extends Stage
 {

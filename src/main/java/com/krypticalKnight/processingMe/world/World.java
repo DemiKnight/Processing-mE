@@ -60,9 +60,16 @@ public class World {
     }
 
     /**
-     * Convert a World.json to a World object.
+     * @brief Convert a World.json to a {@link World} object.
      *
-     * @param rawWorldData The full Data from a world.json
+     * @details
+     * Phases through the entire JSON object, looking for <b>"worldData"</b> and <b>"levels"</b> objects.
+     * <b>"worldDate"</b> contains information that will be applied to this object. <b>levels</b> object will contain
+     * an array of objects that will then use {@link Level.createLevel() createLevel()} to create a new instance of
+     * {@link Level} and add it to {@link World.levels levels}.
+     *
+     *
+     * @param[in] rawWorldData The full Data from a world.json
      * @return New World object.
      */
     public static World createWorld(JSONObject rawWorldData)
@@ -115,6 +122,4 @@ public class World {
 
         return newWorld;
     }
-
-
 }
