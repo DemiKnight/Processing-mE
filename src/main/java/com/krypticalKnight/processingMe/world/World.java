@@ -41,7 +41,6 @@ public class World {
      */
     private Level[] levels;
 
-
     /**
      *
      * @return The Height of the World
