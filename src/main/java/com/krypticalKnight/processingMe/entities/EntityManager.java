@@ -167,7 +167,7 @@ public class EntityManager {
        {
            EntityLocation loc = it.next();
 
-           loc.getEntityIndex().update(loc);
+           loc.getTargetEntity().update(loc);
 
        }
    }

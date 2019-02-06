@@ -1,23 +1,18 @@
 package com.krypticalKnight.processingMe.entities;
 
-public class EntityLocation {
+public class EntityLocation extends MetaData {
 
     private int xLocation;
 
     private int yLocation;
 
-    private final Entity entity;
-
     public EntityLocation(Entity entityToRefnerece1, int defaultXLocation, int defaultYLocation)
     {
-        this.entity = entityToRefnerece1;
+        //Base MetaData
+        super(entityToRefnerece1);
+
         this.xLocation = defaultXLocation;
         this.yLocation = defaultYLocation;
-    }
-
-    public static EntityLocation createLocation(Entity entityToTrack, int xNewLoc, int yNewLoc)
-    {
-        return new EntityLocation(entityToTrack,xNewLoc,yNewLoc);
     }
 
     public int getxLocation() {
@@ -44,9 +39,5 @@ public class EntityLocation {
     public void transformYLocation(int transformY)
     {
         this.yLocation += transformY;
-    }
-
-    public Entity getEntityIndex() {
-        return entity;
     }
 }

@@ -1,3 +1,10 @@
+/**
+ * @page WorldJsonTutorial Creating World JSON files
+ * @tableofcontents
+ * A World JSON file's purpose is to create a multi-dimensional world for the player to play in. It is intended to be loaded once
+ * and
+ *
+ */
 package com.krypticalKnight.processingMe.world;
 
 import processing.data.JSONArray;

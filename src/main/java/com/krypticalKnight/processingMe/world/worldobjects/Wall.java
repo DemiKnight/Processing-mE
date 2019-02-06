@@ -3,6 +3,7 @@ package com.krypticalKnight.processingMe.world.worldobjects;
 import com.krypticalKnight.processingMe.Application;
 import com.krypticalKnight.processingMe.entities.Entity;
 import com.krypticalKnight.processingMe.entities.EntityLocation;
+import com.krypticalKnight.processingMe.entities.MetaData;
 import processing.core.PImage;
 import processing.data.JSONArray;
 
@@ -19,17 +20,25 @@ public class Wall extends Entity {
     private PImage resourcel;
 
     /**
-     * Will be used when the parent Processing instance is set later on.
+     * @brief Will be used when the parent Processing instance is set later on.
      *
-     * @param newID
      */
-    public Wall(String newID) {
-        super(newID);
+    public Wall()
+    {
+        super("Wall");
     }
 
+
+
+    /**
+     *
+     * @param objectData
+     * @param entityID
+     * @return
+     */
     public static Wall createWall(JSONArray objectData, String entityID)
     {
-        Wall tempWall = new Wall(entityID);
+        Wall tempWall = new Wall();
 
         //Required Variables
         tempWall.wallStart = new EntityLocation(tempWall ,objectData.getInt(0),objectData.getInt(1));
@@ -46,7 +55,7 @@ public class Wall extends Entity {
     @Override
     public void render(Application graphics, EntityLocation location)
     {
+        graphics.fill(this.colour.getRed(), this.colour.getGreen(), this.colour.getBlue());
         graphics.line(wallStart.getxLocation(),wallStart.getyLocation(),wallEnd.getxLocation(),wallEnd.getyLocation());
-
     }
 }

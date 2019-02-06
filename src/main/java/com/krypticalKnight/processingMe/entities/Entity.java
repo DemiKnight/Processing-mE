@@ -25,6 +25,8 @@ public abstract class Entity {
      */
     private final String ID;
 
+    protected MetaData meta;
+
     public String getID() {
         return this.ID;
     }

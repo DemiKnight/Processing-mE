@@ -15,6 +15,7 @@ import java.util.LinkedList;
  * @details
  * A
  *
+ *
  * @todo Implement geometry and a viewport to be able to navigate.
  * @author Alex Knight (DemiKnight)
  * @since 0.1.1
@@ -22,7 +23,6 @@ import java.util.LinkedList;
  */
 public class Level extends Stage
 {
-
     public Level()
     {
 
@@ -54,7 +54,6 @@ public class Level extends Stage
 
         /* ################ Meta Data #####################*/
         /* ################ Structure Data #####################*/
-
 
         //The contains all commands to actually build the level and create the entities.
         JSONObject structure = rawLevel.getJSONObject("structure");
@@ -92,15 +91,10 @@ public class Level extends Stage
      */
     private void handleCreateWall(LinkedList<Entity> listToModify, JSONArray listOfWalls, String baseTag)
     {
-
         for (int levelArrayIndex = 0; levelArrayIndex < listOfWalls.size(); levelArrayIndex++)
         {
-
             listToModify.add(Wall.createWall(listOfWalls.getJSONArray(levelArrayIndex),baseTag+":"+levelArrayIndex));
         }
-
-//        System.out.println(listOfWalls.toString());
-//        System.out.println("#########################");
 
     }
 
