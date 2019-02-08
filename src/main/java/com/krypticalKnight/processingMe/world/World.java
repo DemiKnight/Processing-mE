@@ -1,5 +1,6 @@
 package com.krypticalKnight.processingMe.world;
 
+import com.krypticalKnight.processingMe.Application;
 import processing.data.JSONObject;
 
 import java.util.Iterator;
@@ -40,6 +41,8 @@ public class World {
      * @see Level
      */
     private Level[] levels;
+
+    private Level currentLevel;
 
     /**
      *
@@ -82,6 +85,7 @@ public class World {
 
         World newWorld = null;
 
+        //Todo: Remove this try/catch clause
         try
         {
             //Temp store for all levels.
@@ -103,17 +107,11 @@ public class World {
 
 //                System.out.println(levelIndex);
 
-                tempLevelStore.add( new Level().createLevel(rawLevelData.getJSONObject(levelIndex), Integer.parseInt(levelIndex)));
-
-            //              System.out.println(.toString());
-
+//                tempLevelStore.add(
+//                Application.getStageManager().addStageI(new Level().createLevel(rawLevelData.getJSONObject(levelIndex), Integer.parseInt(levelIndex))));
             }
 
-
             newWorld.levels = tempLevelStore.toArray(new Level[0]);
-
-//            Application.getStageManager(). = newWorld.levels[rawMetaData.getInt("default-level")];
-
         }
         catch (NullPointerException e)
         {
@@ -122,4 +120,7 @@ public class World {
 
         return newWorld;
     }
+
+    public Level getCurrentLevel() {return currentLevel;}
+
 }

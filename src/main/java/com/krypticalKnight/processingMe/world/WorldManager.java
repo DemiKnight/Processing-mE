@@ -1,6 +1,7 @@
 package com.krypticalKnight.processingMe.world;
 
 import com.krypticalKnight.testApp.TestApp;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import processing.core.PApplet;
 import processing.data.JSONObject;
@@ -233,4 +234,7 @@ public class WorldManager
     {
 
     }
+
+    @Contract(pure = true)
+    public World getCurrentWorld() {return currentWorld;}
 }

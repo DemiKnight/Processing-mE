@@ -6,12 +6,8 @@ import com.krypticalKnight.processingMe.entities.EntityLocation;
 import com.krypticalKnight.processingMe.entities.Stage;
 import com.krypticalKnight.processingMe.world.worldobjects.Wall;
 
-public class MainMenu extends Stage {
-
-    public MainMenu()
-    {
-        super("MainMenu");
-    }
+public class MainMenu extends com.krypticalKnight.processingMe.util.MainMenu
+{
 
     public void init()
     {

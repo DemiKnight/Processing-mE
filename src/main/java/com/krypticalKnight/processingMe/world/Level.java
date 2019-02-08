@@ -70,7 +70,7 @@ public class Level extends Stage
             {
                 case "create-wall":
 
-                    handleCreateWall(tempEntityToLoadList,structure.getJSONArray(WorldHandler.WorldCommands.CommandBuildWall.getCommandRaw()),levelTag+":wall:");
+                    handleCreateWall(tempEntityToLoadList, structure.getJSONArray(WorldHandler.WorldCommands.CommandBuildWall.getCommandRaw()),levelTag+":wall:");
 
                     break;
             }

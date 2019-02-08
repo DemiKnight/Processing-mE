@@ -66,30 +66,30 @@ public class MetaData
         this.rawInformation.put(newKey, data);
     }
 
-    public <T> void  setInformation(String newKey, TypeKind TYPE, T data)
-    {
-        switch (TYPE)
-        {
-            case BOOLEAN:
-                rawInformation.setBoolean(newKey, (boolean) data);
-                break;
-            case INT:
-                rawInformation.setInt(newKey, (int) data);
-                break;
-            case LONG:
-                rawInformation.setLong(newKey, (long) data);
-                break;
-            case FLOAT:
-                rawInformation.setFloat(newKey, (float) data);
-                break;
-            case DOUBLE:
-                rawInformation.setDouble(newKey, (double) data);
-                break;
-            case ARRAY:
-                rawInformation.setJSONArray(newKey, (JSONArray) data);
-                break;
-        }
-    }
+//    public <T> void  setInformation(String newKey, TypeKind TYPE, T data)
+//    {
+//        switch (TYPE)
+//        {
+//            case BOOLEAN:
+//                rawInformation.setBoolean(newKey, (boolean) data);
+//                break;
+//            case INT:
+//                rawInformation.setInt(newKey, (int) data);
+//                break;
+//            case LONG:
+//                rawInformation.setLong(newKey, (long) data);
+//                break;
+//            case FLOAT:
+//                rawInformation.setFloat(newKey, (float) data);
+//                break;
+//            case DOUBLE:
+//                rawInformation.setDouble(newKey, (double) data);
+//                break;
+//            case ARRAY:
+//                rawInformation.setJSONArray(newKey, (JSONArray) data);
+//                break;
+//        }
+//    }
 
     public Entity getTargetEntity()
     {

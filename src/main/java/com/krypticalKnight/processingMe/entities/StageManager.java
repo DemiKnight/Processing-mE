@@ -45,6 +45,8 @@ public class StageManager {
      */
     private Stage[] stageList;
 
+    private LinkedList<Stage> tempStageList = new LinkedList<>();
+
     private UseableResource<Stage>[] stageDictionary;
 
     /**
@@ -105,17 +107,33 @@ public class StageManager {
      */
     public void Registry(StageRegistry newStageRegistry)
     {
-        LinkedList<Stage> tempStageCache = new LinkedList<>();
+//        LinkedList<Stage> tempStageCache = new LinkedList<>();
 
-        newStageRegistry.RegisterStages(tempStageCache);
+        newStageRegistry.RegisterStages(tempStageList);
 
-        stageDictionary = new UseableResource[tempStageCache.size()];
+//        stageDictionary = new UseableResource[tempStageList.size()];
+//
+//        for (int index = 0; index < stageDictionary.length; index++) {
+//            stageDictionary[index] = new UseableResource<Stage>(tempStageCache.get(index), tempStageCache.get(index).getID());
+//        }
 
-        for (int index = 0; index < stageDictionary.length; index++) {
-            stageDictionary[index] = new UseableResource<Stage>(tempStageCache.get(index),tempStageCache.get(index).getID());
-        }
+//        this.stageList = tempStageCache.toArray(new Stage[0]);
+    }
 
-        this.stageList = tempStageCache.toArray(new Stage[0]);
+    public void addStage(Stage newStage)
+    {
+        this.tempStageList.add(newStage);
+    }
+
+    public Stage addStageI(Stage newStage)
+    {
+        this.tempStageList.add(newStage);
+        return tempStageList.getLast();
+    }
+
+    public void finalise()
+    {
+        this.stageList = tempStageList.toArray(new Stage[0]);
     }
 
     /**

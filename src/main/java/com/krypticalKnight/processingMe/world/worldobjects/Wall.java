@@ -4,6 +4,7 @@ import com.krypticalKnight.processingMe.Application;
 import com.krypticalKnight.processingMe.entities.Entity;
 import com.krypticalKnight.processingMe.entities.EntityLocation;
 import com.krypticalKnight.processingMe.entities.MetaData;
+import processing.core.PApplet;
 import processing.core.PImage;
 import processing.data.JSONArray;
 
@@ -53,7 +54,7 @@ public class Wall extends Entity {
     }
 
     @Override
-    public void render(Application graphics, EntityLocation location)
+    public void render(PApplet graphics, EntityLocation location)
     {
         graphics.fill(this.colour.getRed(), this.colour.getGreen(), this.colour.getBlue());
         graphics.line(wallStart.getxLocation(),wallStart.getyLocation(),wallEnd.getxLocation(),wallEnd.getyLocation());

@@ -31,6 +31,7 @@ import com.krypticalKnight.processingMe.entities.EntityManager;
 import com.krypticalKnight.processingMe.entities.StageManager;
 import com.krypticalKnight.processingMe.render.RenderManager;
 import com.krypticalKnight.processingMe.world.WorldManager;
+import org.jetbrains.annotations.Contract;
 import processing.core.PApplet;
 
 import static com.krypticalKnight.processingMe.MainApp.mainLogger;
@@ -45,7 +46,10 @@ import static com.krypticalKnight.processingMe.MainApp.mainLogger;
  * @author Alex Knight (DemiKnight)
  * @since 0.1.0
  */
-public class Application extends PApplet {
+@SuppressWarnings("JavadocReference")
+public class Application extends PApplet
+{
+    private static GameState currentState = GameState.Loading;
 
     /**
      * Contains all entities being
@@ -56,7 +60,7 @@ public class Application extends PApplet {
     /**
      *
      */
-    protected static RenderManager renderM = new RenderManager();
+    protected static RenderManager renderM;// = new RenderManager(stageM, this, worldM);
 
     /**
      * @brief  A list of possible {@link com.krypticalKnight.processingMe.entities.Stage Stage}
@@ -88,17 +92,20 @@ public class Application extends PApplet {
      * The application will execute @ref preInit(), @ref init(), @ref postInit() sequentially. By the end,
      * the program should be able to be successfully render/function.
      *
-     * @see preInit()
-     * @see init()
-     * @See postInit()
+     * @see Application.preInit()
+     * @see Application.init()
+     * @See Application.postInit()
      */
     public void setupApplication()
     {
+        renderM = new RenderManager(stageM,this, worldM);
+
         preInit();
 
         init();
 
         postInit();
+        switchState(GameState.MainMenu);
     }
 
     /**
@@ -143,12 +150,9 @@ public class Application extends PApplet {
 
 
         entityM.FinaliseRegistry();
-
+        stageM.finalise();
 
         renderM.getResourceM().loadResources(this);
-
-//        entityM.giveParentInstance(this);
-//        renderM.init();
 
         mainLogger.LogInformation("Init :: End");
     }
@@ -174,9 +178,37 @@ public class Application extends PApplet {
     {
         clear();
         background(170);
-        renderM.draw(stageM, this);
+//        renderM.draw(stageM, this);
+        renderM.render();
         entityM.runUpdate(stageM);
     }
+
+    public static void switchState(GameState newState)
+    {
+        currentState = newState;
+
+        switch (newState)
+        {
+            case MainMenu:
+                //Load the main menu stage.
+
+                break;
+            case World:
+                //Load and use the current world, specifically whatever level is currently loaded
+
+
+
+                break;
+            case Loading:
+                //TODO add splash screen that gives the user feedback during loading.
+
+
+                break;
+        }
+    }
+
+    @Contract(pure = true)
+    public static GameState getCurrentState() {return currentState; }
 
     @Override
     public void settings() {

@@ -62,7 +62,7 @@ public abstract class Entity {
      * This function is called after <tt>update()</tt> has finished updating the object instance.
      * @implNote Must be a <i>pure-function</i>, meaning it must not change the instance of the class
      */
-    public void render(Application graphics, EntityLocation location){}
+    public void render(PApplet graphics, EntityLocation location){}
 
     /**
      * Controls whether the entity should be updated on this pass, and whether it should be <i>halted</i>.

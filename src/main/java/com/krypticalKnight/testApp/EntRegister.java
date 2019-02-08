@@ -11,7 +11,7 @@ import java.util.LinkedList;
 public class EntRegister implements EntityRegistry {
 
     private TestEntity test1 = new TestEntity();
-    private Wall testWall = new Wall("TestWall");
+    private Wall testWall = new Wall();
 
     @Override
     public void RegisterEntities(LinkedList<Entity> listToModify) {
