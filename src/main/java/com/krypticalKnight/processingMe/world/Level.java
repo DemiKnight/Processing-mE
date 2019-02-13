@@ -1,6 +1,5 @@
 package com.krypticalKnight.processingMe.world;
 
-import com.krypticalKnight.processingMe.Application;
 import com.krypticalKnight.processingMe.entities.Entity;
 import com.krypticalKnight.processingMe.entities.Stage;
 import com.krypticalKnight.processingMe.world.worldobjects.Wall;
