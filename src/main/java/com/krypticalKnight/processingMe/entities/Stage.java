@@ -53,6 +53,7 @@ public abstract class Stage {
 
     public Iterator<EntityLocation> getIterator()
     {
+        System.out.println(entityLocations.size());
         return entityLocations.iterator();
     }
 }

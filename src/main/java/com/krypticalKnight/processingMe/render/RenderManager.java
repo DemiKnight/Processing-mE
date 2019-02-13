@@ -63,6 +63,7 @@ public class RenderManager
         else
         {
 //            renderWorld();
+            System.out.println(worldManager);
             entityLocationIterator = worldManager.getCurrentWorld().getCurrentLevel().getIterator();
         }
 

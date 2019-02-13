@@ -16,6 +16,7 @@ package com.krypticalKnight.processingMe.entities;
 import com.krypticalKnight.processingMe.MainApp;
 import com.krypticalKnight.processingMe.util.UseableResource;
 import org.jetbrains.annotations.Contract;
+import processing.core.PApplet;
 
 import java.util.LinkedList;
 
@@ -77,15 +78,26 @@ public class StageManager {
     public void loadStage(String stageID)
     {
         boolean stageFound = false;
-        for (int index = 0;!stageFound && index < stageDictionary.length; index++)
+
+        for (int stageIndex = 0; stageIndex < stageList.length && !stageFound; stageIndex++)
         {
-            if(stageDictionary[index].getID().equals(stageID))
+            if (stageList[stageIndex].getID() == stageID)
             {
-                stageFound=true; //No need to continue searching.
-                currentStage = stageDictionary[index].getResoure();
+                stageFound=true;
+                currentStage = stageList[stageIndex];
                 currentStage.init();
             }
         }
+//
+//        for (int index = 0; !stageFound && index < stageDictionary.length; index++)
+//        {
+//            if(stageDictionary[index].getID().equals(stageID))
+//            {
+//                stageFound = true; //No need to continue searching.
+//                currentStage = stageDictionary[index].getResoure();
+//                currentStage.init();
+//            }
+//        }
         if(!stageFound)
         {
             MainApp.mainLogger.LogError("Unable to load stage! With stageID: " + stageID);

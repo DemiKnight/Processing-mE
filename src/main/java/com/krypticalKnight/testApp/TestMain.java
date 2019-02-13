@@ -4,7 +4,8 @@ import processing.core.PApplet;
 
 import static com.krypticalKnight.testApp.TestApp.testAppLogger;
 
-public class TestMain {
+public class TestMain
+{
 
     private static TestApp app = new TestApp();
     

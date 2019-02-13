@@ -26,7 +26,7 @@ import java.util.stream.Stream;
  * @see World
  */
 @SuppressWarnings("JavadocReference")
-public class WorldManager
+public class    WorldManager
 {
 
     /**
