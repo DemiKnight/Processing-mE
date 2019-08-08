@@ -36,11 +36,11 @@ public class World {
         return ID;
     }
 
-    /**
-     * @brief Contains {@link Level levels} defined in the JSON
-     * @see Level
-     */
-    private Level[] levels;
+/**
+ * @brief Contains {@link Level levels} defined in the JSON
+ * @see Level
+ */
+private Level[] levels;
 
     private Level currentLevel;
 
@@ -83,7 +83,8 @@ public class World {
         //Contains all meta information for the entire world.
         JSONObject rawMetaData = rawWorldData.getJSONObject("worldData");
 
-        World newWorld = null;
+        //World that is being built from the JSON file
+        World newWorld = new World();
 
         //Todo: Remove this try/catch clause
         try
@@ -91,7 +92,6 @@ public class World {
             //Temp store for all levels.
             LinkedList<Level> tempLevelStore = new LinkedList<>();
 
-            newWorld = new World();
 
             // World meta data.
             newWorld.ID = rawMetaData.getString("name"); //Name is required.
@@ -101,14 +101,20 @@ public class World {
             Iterator levelIterator = rawLevelData.keyIterator();
 
             //Iterate all "level" children.
+            // TODO Fix this !! Level is never created.
             while (levelIterator.hasNext())
             {
                 String levelIndex = (String) levelIterator.next();
 
-//                System.out.println(levelIndex);
+                System.out.println(levelIndex);
 
+                tempLevelStore.add(
+                        new Level().createLevel(
+                                rawLevelData.getJSONObject(levelIndex),
+                                Integer.parseInt(levelIndex))
+                );
 //                tempLevelStore.add(
-//                Application.getStageManager().addStageI(new Level().createLevel(rawLevelData.getJSONObject(levelIndex), Integer.parseInt(levelIndex))));
+//                Application.getStageManager().addStageI(new Level().createLevel(rawLevelData.getJSONObject(levelIndex), Integer.parseInt(levelIndex)));
             }
 
             newWorld.levels = tempLevelStore.toArray(new Level[0]);
@@ -121,6 +127,13 @@ public class World {
         return newWorld;
     }
 
-    public Level getCurrentLevel() {return currentLevel;}
+    public Level getCurrentLevel()
+    {
+        return currentLevel;
+    }
 
+    public void loadLevel()
+    {
+
+    }
 }

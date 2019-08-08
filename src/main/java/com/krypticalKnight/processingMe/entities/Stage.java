@@ -1,6 +1,8 @@
 package com.krypticalKnight.processingMe.entities;
 
 
+import com.krypticalKnight.processingMe.entities.template.EntityLocation;
+
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -27,6 +29,8 @@ public abstract class Stage {
      *
      */
     protected Entity[] entitiesToLoad;
+
+    protected EntityLocation[] entityLocationsFinal;
 
     /**
      * @brief Relative locations  {@link Entity entities}
@@ -55,5 +59,10 @@ public abstract class Stage {
     {
         System.out.println(entityLocations.size());
         return entityLocations.iterator();
+    }
+
+    public void addToEntityLocations(EntityLocation newLocation)
+    {
+        this.entityLocations.add(newLocation);
     }
 }

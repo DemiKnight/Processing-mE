@@ -2,9 +2,7 @@ package com.krypticalKnight.testApp.stages;
 
 import com.krypticalKnight.processingMe.Application;
 import com.krypticalKnight.processingMe.entities.Entity;
-import com.krypticalKnight.processingMe.entities.EntityLocation;
-import com.krypticalKnight.processingMe.entities.Stage;
-import com.krypticalKnight.processingMe.world.worldobjects.Wall;
+import com.krypticalKnight.processingMe.entities.template.EntityLocation;
 
 public class MainMenu extends com.krypticalKnight.processingMe.util.MainMenu
 {

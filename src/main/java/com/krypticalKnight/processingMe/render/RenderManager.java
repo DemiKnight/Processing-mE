@@ -3,11 +3,9 @@ package com.krypticalKnight.processingMe.render;
 import com.krypticalKnight.processingMe.Application;
 import com.krypticalKnight.processingMe.GameState;
 import com.krypticalKnight.processingMe.entities.Entity;
-import com.krypticalKnight.processingMe.entities.EntityLocation;
+import com.krypticalKnight.processingMe.entities.template.EntityLocation;
 import com.krypticalKnight.processingMe.entities.StageManager;
-import com.krypticalKnight.processingMe.world.WorldHandler;
 import com.krypticalKnight.processingMe.world.WorldManager;
-import com.krypticalKnight.testApp.stages.MainMenu;
 import processing.core.PApplet;
 
 import java.util.Iterator;
@@ -55,7 +53,7 @@ public class RenderManager
         Iterator<EntityLocation> entityLocationIterator;
 
         //Depending on the state, look for the different manager to use.
-        if (Application.getCurrentState() != GameState.MainMenu)
+        if (Application.getCurrentState() == GameState.MainMenu)
         {
 //            renderStage();
             entityLocationIterator = stageManagerRef.getCurrentStage().getIterator();
@@ -71,6 +69,8 @@ public class RenderManager
         while (entityLocationIterator.hasNext())
         {
             EntityLocation entLoc = entityLocationIterator.next();
+
+            System.out.println(String.format("X: %s, Y: %s", entLoc.getEntityLocation().getxLocation(), entLoc.getEntityLocation().getyLocation()));
 
             entLoc.getTargetEntity().render(mainRender,entLoc);
         }

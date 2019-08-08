@@ -2,7 +2,7 @@ package com.krypticalKnight.testApp.entities;
 
 import com.krypticalKnight.processingMe.Application;
 import com.krypticalKnight.processingMe.entities.Entity;
-import com.krypticalKnight.processingMe.entities.EntityLocation;
+import com.krypticalKnight.processingMe.entities.template.EntityLocation;
 import com.krypticalKnight.processingMe.render.ResourceRequirements;
 
 public class TestEntity extends Entity implements ResourceRequirements
@@ -21,12 +21,12 @@ public class TestEntity extends Entity implements ResourceRequirements
     {
 //        graphics.ellipse(location.getxLocation(),location.getyLocation(),10,10);
 
-        graphics.image(Application.getRenderManager().getResourceM().getResource("com.krypticalKnight.testApp/UP.png"),location.getxLocation(),location.getyLocation(), 20, 20);
+        graphics.image(Application.getRenderManager().getResourceM().getResource("com.krypticalKnight.testApp/UP.png"),location.getEntityLocation().getxLocation(),location.getEntityLocation().getyLocation(), 20, 20);
     }
 
     public void update(EntityLocation loc)
     {
-        loc.transformXLocation(2);
+        loc.getEntityLocation().incrementX(2);
     }
 
     @Override

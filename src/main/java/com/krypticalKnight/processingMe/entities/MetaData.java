@@ -6,9 +6,9 @@ import processing.data.JSONObject;
 import javax.lang.model.type.TypeKind;
 
 @SuppressWarnings("JavadocReference")
-public class MetaData
+public abstract class MetaData
 {
-    protected final Entity targetEntity;
+    protected Entity targetEntity;
 
     private JSONObject rawInformation;
 
@@ -17,6 +17,9 @@ public class MetaData
         this.targetEntity = specificEntity;
 
         this.rawInformation = new JSONObject();
+    }
+
+    public MetaData() {
     }
 
     /**

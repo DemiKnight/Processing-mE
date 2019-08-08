@@ -1,6 +1,6 @@
 package com.krypticalKnight.processingMe.entities;
 
-import com.krypticalKnight.processingMe.Application;
+import com.krypticalKnight.processingMe.entities.template.EntityLocation;
 import com.krypticalKnight.processingMe.render.RENDER_STATES;
 import com.krypticalKnight.processingMe.render.RenderManager;
 import processing.core.PApplet;

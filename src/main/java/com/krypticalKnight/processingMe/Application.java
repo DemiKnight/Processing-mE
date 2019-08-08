@@ -132,7 +132,7 @@ public class Application extends PApplet
         //Required for the PApplet.loadImage() method.
         this.sketchPath();
 
-        worldM.init();
+
 
         mainLogger.LogInformation("Pre Init :: End");
     }
@@ -151,6 +151,8 @@ public class Application extends PApplet
 
         entityM.FinaliseRegistry();
         stageM.finalise();
+        //Need to make sure all template entities are accessible.
+        worldM.init();
 
         renderM.getResourceM().loadResources(this);
 

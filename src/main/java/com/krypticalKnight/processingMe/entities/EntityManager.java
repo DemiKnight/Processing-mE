@@ -17,8 +17,11 @@ package com.krypticalKnight.processingMe.entities;
 
 import com.krypticalKnight.processingMe.EntityRegistry;
 import com.krypticalKnight.processingMe.MainApp;
+import com.krypticalKnight.processingMe.entities.template.EntityLocation;
 import com.krypticalKnight.processingMe.util.UseableResource;
 
+import javax.naming.LinkLoopException;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -45,28 +48,78 @@ public class EntityManager {
      * Will store all possible Entities that can be used throughout the application. Even if they aren't being used with the
      * current {@link Stage}.
      */
-    private Entity[] entityList;
+    private Entity[] entityStore;
+
+    /**
+     * " @
+     */
+    private EntityLocation[] locationStore;
 
     /**
      * @brief Temporary store of entities, to be modified during loading. Will be destroyed when complete.
      *
      * @details
      * When application is loading, all required entities should be added to this list. When the application is finished loading,
-     * entities will be moved to the {@link EntityManager.entityList}
+     * entities will be moved to the {@link EntityManager.entityStore}
      *
      */
     private LinkedList<Entity> temporaryEntityList = new LinkedList<>();
 
-    /**
-     * Will hold the <i>index location</i> of the entities to update before each com.krytpicalknight.processingMe.render pass. Will use <tt>updateEntities()</tt>
-     * iterate and update all entities.
-     *
-     * TODO Decide whether this is needed.
+    /*
+     * This will store all locations and meta data for each object.
      */
-    private List<Entity> updateList;
+    private LinkedList<EntityLocation> temporaryEntityLocation = new LinkedList<>();
+
+    private EntityLocation[] entityLocationStore;
+
+    public Iterator<EntityLocation> getEntityLocationIterator()
+    {
+         return temporaryEntityLocation.iterator();
+    }
+
+    public void addEntityLocation(EntityLocation newEntity)
+    {
+        if (temporaryEntityLocation != null)
+        {
+            //Game is still loading.|
+            this.temporaryEntityLocation.add(newEntity);
+
+        }else{
+            //Past game main Level Loading
+            LinkedList<EntityLocation> tempOldArray = new LinkedList<EntityLocation>(Arrays.asList(entityLocationStore));
+
+            tempOldArray.add(newEntity);
+
+            this.entityLocationStore = tempOldArray.toArray(new EntityLocation[0]);
+        }
+    }
+
+    public void addEntityLocation(LinkedList<EntityLocation> newEntity)
+    {
+        if (temporaryEntityLocation != null)
+        {
+            //Game is still loading.|
+            this.temporaryEntityLocation.addAll(newEntity);
+        }else{
+            //Past game main Level Loading
+            LinkedList<EntityLocation> tempOldArray = new LinkedList<EntityLocation>(Arrays.asList(entityLocationStore));
+
+            tempOldArray.addAll(newEntity);
+
+            this.entityLocationStore = tempOldArray.toArray(new EntityLocation[0]);
+        }
+    }
+
+//    /**
+//     * Will hold the <i>index location</i> of the entities to update before each com.krytpicalknight.processingMe.render pass. Will use <tt>updateEntities()</tt>
+//     * iterate and update all entities.
+//     *
+//     * TODO Decide whether this is needed.
+//     */
+//    private List<Entity> updateList;
 
     /**
-     * @brief Used to lookup the Entity ID's to the relvant ones store within the <tt>entityList</tt>.
+     * @brief Used to lookup the Entity ID's to the relvant ones store within the <tt>entityStore</tt>.
      */
     private UseableResource<Entity>[] entityDictionary;
 
@@ -105,6 +158,8 @@ public class EntityManager {
 //       }
    }
 
+
+
     /**
      * @brief Store registered entities in permanent array.
      *
@@ -114,16 +169,19 @@ public class EntityManager {
      */
    public void FinaliseRegistry()
    {
-       this.entityList = temporaryEntityList.toArray(new Entity[0]);
+       this.entityStore = temporaryEntityList.toArray(new Entity[0]);
 
        entityDictionary = new UseableResource[temporaryEntityList.size()];
 
        for (int index = 0; index < entityDictionary.length; index++) {
-           entityDictionary[index] = new UseableResource<Entity>(entityList[index], entityList[index].getID());
+           entityDictionary[index] = new UseableResource<Entity>(entityStore[index], entityStore[index].getID());
        }
+
+       entityLocationStore = temporaryEntityLocation.toArray(new EntityLocation[0]);
 
        //No Longer needed
        this.temporaryEntityList = null;
+       this.temporaryEntityLocation = null;
    }
 
     /**
@@ -135,7 +193,7 @@ public class EntityManager {
    {
        if (temporaryEntityList == null)
        {
-           return this.entityList;
+           return this.entityStore;
        } else {
            return temporaryEntityList.toArray(new Entity[0]);
        }

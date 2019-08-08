@@ -2,6 +2,7 @@ package com.krypticalKnight.processingMe.world;
 
 import com.krypticalKnight.processingMe.entities.Entity;
 import com.krypticalKnight.processingMe.entities.Stage;
+import com.krypticalKnight.processingMe.entities.template.EntityLocation;
 import com.krypticalKnight.processingMe.world.worldobjects.Wall;
 import processing.data.JSONArray;
 import processing.data.JSONObject;
@@ -22,14 +23,13 @@ import java.util.LinkedList;
  */
 public class Level extends Stage
 {
-    public Level()
-    {
-
-    }
-
+    public Level(){}
     protected Level(String id) {
         super(id);
     }
+
+//    private EntityLocation[];
+
 
     /**
      * Convert each level into a Level object.
@@ -49,6 +49,7 @@ public class Level extends Stage
         Level newLevel = new Level(levelTag);
 
         //Contains all Entities that need to be loaded for the Level to function properly.
+        // TODO rEVISE Whether this is needed anymore.
         LinkedList<Entity> tempEntityToLoadList = new LinkedList<>();
 
         /* ################ Meta Data #####################*/
@@ -69,7 +70,7 @@ public class Level extends Stage
             {
                 case "create-wall":
 
-                    handleCreateWall(tempEntityToLoadList, structure.getJSONArray(WorldHandler.WorldCommands.CommandBuildWall.getCommandRaw()),levelTag+":wall:");
+                    handleCreateWall(tempEntityToLoadList, structure.getJSONArray(WorldHandler.WorldCommands.CommandBuildWall.getCommandRaw()),levelTag+":wall");
 
                     break;
             }
@@ -92,9 +93,9 @@ public class Level extends Stage
     {
         for (int levelArrayIndex = 0; levelArrayIndex < listOfWalls.size(); levelArrayIndex++)
         {
-            listToModify.add(Wall.createWall(listOfWalls.getJSONArray(levelArrayIndex),baseTag+":"+levelArrayIndex));
+            /*listToModify.add*/
+            Wall.createWall(listOfWalls.getJSONArray(levelArrayIndex),baseTag+":"+levelArrayIndex, this);
         }
-
     }
 
 }
