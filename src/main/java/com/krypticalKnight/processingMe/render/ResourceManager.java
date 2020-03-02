@@ -32,11 +32,6 @@ public class ResourceManager
 
 
     /**
-     * The types currently supported, relating to the lists
-     */
-
-
-    /**
      *
      * @param entityManager
      */
@@ -53,7 +48,10 @@ public class ResourceManager
                 {
                     //If the resource is already added, skip
                     if(!resourceLocations.contains(selectedResourced.getValue()))
-                    resourceLocations.add(selectedResourced.getValue());
+                        resourceLocations.add(selectedResourced.getValue());
+
+                    MainApp.mainLogger.LogInformation(selectedResourced.getValue());
+
                 }
             }
         }

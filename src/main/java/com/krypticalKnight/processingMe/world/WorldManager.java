@@ -1,5 +1,6 @@
 package com.krypticalKnight.processingMe.world;
 
+import com.krypticalKnight.processingMe.MainApp;
 import com.krypticalKnight.testApp.TestApp;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -168,7 +169,8 @@ public class WorldManager
 
 
             //If the file contains some data to load.
-            if (rawWorldJson.isEmpty() && rawWorldData != null)
+//            if (rawWorldJson.isEmpty() && rawWorldData != null)
+            if (rawWorldData != null)
             {
                 //Convert data into a string.
                 rawWorldJson = new String(rawWorldData, Charset.defaultCharset());

@@ -9,7 +9,7 @@ import processing.core.PShape;
  * TODO Remove this class and just extend all classes
  * @param <Type>
  */
-public class UseableResource <Type>
+public class    UseableResource <Type>
 {
     enum supportedTypes
     {

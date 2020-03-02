@@ -161,7 +161,7 @@ public class EntityManager {
 
 
     /**
-     * @brief Store registered entities in permanent array.
+     * @brief Store registered entities in a permanent array.
      *
      * @details
      *

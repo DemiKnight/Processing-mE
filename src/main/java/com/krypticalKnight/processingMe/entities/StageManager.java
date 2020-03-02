@@ -146,6 +146,7 @@ public class StageManager {
     public void finalise()
     {
         this.stageList = tempStageList.toArray(new Stage[0]);
+
     }
 
     /**
