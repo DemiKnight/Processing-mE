@@ -1,4 +1,4 @@
-package uk.co.alexknight.processingme
+package uk.co.alexknight.processingme;
 
 import processing.core.PApplet;
 
