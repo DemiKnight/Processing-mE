@@ -1,8 +1,8 @@
 package uk.co.alexknight.processingme.entities;
 
-import com.krypticalKnight.processingMe.EntityRegistry;
-import com.krypticalKnight.processingMe.MainApp;
-import com.krypticalKnight.processingMe.util.UseableResource;
+import uk.co.alexknight.processingme.EntityRegistry;
+import uk.co.alexknight.processingme.MainApp;
+import uk.co.alexknight.processingme.util.UseableResource;
 
 import java.util.Iterator;
 import java.util.LinkedList;

@@ -1,9 +1,10 @@
 package uk.co.alexknight.processingme.util;
 
-import com.krypticalKnight.processingMe.entities.Entity;
-import com.krypticalKnight.processingMe.entities.Stage;
+
 import processing.core.PImage;
 import processing.core.PShape;
+import uk.co.alexknight.processingme.entities.Entity;
+import uk.co.alexknight.processingme.entities.Stage;
 
 import java.util.LinkedList;
 

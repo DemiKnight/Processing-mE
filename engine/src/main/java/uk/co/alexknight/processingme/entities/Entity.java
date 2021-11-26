@@ -1,8 +1,9 @@
 package uk.co.alexknight.processingme.entities;
 
-import com.krypticalKnight.processingMe.render.RENDER_STATES;
-import com.krypticalKnight.processingMe.render.RenderManager;
+
 import processing.core.PApplet;
+import uk.co.alexknight.processingme.render.RENDER_STATES;
+import uk.co.alexknight.processingme.render.RenderManager;
 
 /**
  * This is the superclass for every entity being rendered to the screen. Through this entity, all relevant rendering

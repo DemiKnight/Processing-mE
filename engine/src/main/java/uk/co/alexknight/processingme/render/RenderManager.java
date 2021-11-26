@@ -1,9 +1,9 @@
 package uk.co.alexknight.processingme.render;
 
-import com.krypticalKnight.processingMe.entities.Entity;
-import com.krypticalKnight.processingMe.entities.EntityLocation;
-import com.krypticalKnight.processingMe.entities.StageManager;
 import processing.core.PApplet;
+import uk.co.alexknight.processingme.entities.Entity;
+import uk.co.alexknight.processingme.entities.EntityLocation;
+import uk.co.alexknight.processingme.entities.StageManager;
 
 import java.util.Iterator;
 import java.util.List;
