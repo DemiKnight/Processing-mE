@@ -4,9 +4,12 @@ ThisBuild / autoScalaLibrary := false
 val ScalaVersion = "3.1.0"
 
 val dependencies = Seq(
-  "com.novocode" % "junit-interface" % "0.11" % "test",
   "org.processing" % "core" % "3.3.7",
-  "org.scala-lang" %% "scala3-library" % "3.1.0"
+  "org.scala-lang" %% "scala3-library" % "3.1.0",
+  // Testing
+  "com.novocode" % "junit-interface" % "0.11" % Test,
+  "org.scalactic" %% "scalactic" % "3.2.10",
+  "org.scalatest" %% "scalatest" % "3.2.10" % Test,
 )
 
 lazy val engine = project.in(file("engine"))
