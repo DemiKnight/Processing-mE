@@ -38,6 +38,6 @@ public class TestEntity extends Entity implements ResourceRequirements {
     @Override
     public void initResource()
     {
-        textureMapV.put("UP-Sprite","com.krypticalKnight.testApp/UP.png");
+        textureMapV.put("UP-Sprite","uk.co.alexknight.processingme.exampleapp/UP.png");
     }
 }
